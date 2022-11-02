@@ -1,0 +1,47 @@
+﻿@model WEB2022Apr_P01_T3.Models.ProductManager 
+
+@{
+    ViewData["Title"] = "CreateProduct";
+}
+
+<div class="loginContainer">
+    <div id="login-container">
+        <p id="loginTitle">Create a new product</p>
+        <form method="post" action="#" enctype="multipart/form-data">
+            <fieldset class="loginFieldset">
+                <div>
+                    <input asp-for="productName" class="inputText" placeholder="Product Name" required />
+                    <span asp-validation-for="productName" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <input asp-for="productPrice" class="inputText" placeholder="Product Price" required />
+                    <span asp-validation-for="productPrice" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <input type="datetime-local" asp-for="productEffectiveDate" class="inputText" placeholder="Product Effective Date" required />
+                    <span asp-validation-for="productEffectiveDate" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <input asp-for="productCondition" class="readonlyText" value="New" readonly />
+                    <span asp-validation-for="productCondition" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <input asp-for="photoUpload" accept="image/jpeg" class="inputText" style="padding-top: 0.3vw" placeholder="Add photo (jpg format)">
+                </div>
+
+                <div>
+                    <input type="submit" id="btnLogin" class="btn-dark inputText" value="Create Product" />
+                </div>
+
+                <div class="btn-dark inputText">
+                    <a asp-action="ViewProducts" style="color: white;">Back</a>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
