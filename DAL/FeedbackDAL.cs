@@ -21,9 +21,10 @@ namespace WEB2022Apr_P01_T3.DAL
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             Configuration = builder.Build();
-            string strConn = Configuration.GetConnectionString("ZZFashionConnectionString");
+            string strConn = Configuration.GetConnectionString("SBLOGConnectionString");
             conn = new SqlConnection(strConn);
         }
+
 
         public void GetAllFeedback()
         {
@@ -41,7 +42,7 @@ namespace WEB2022Apr_P01_T3.DAL
                 {
                     FeedbackViewModel f = new FeedbackViewModel();
                     f.FeedbackID = reader.GetInt32(0);
-                    f.MemberID = reader.GetString(1);
+                    f.Email = reader.GetString(1);
                     f.DateTimePosted = reader.GetDateTime(2);
                     f.Title = reader.GetString(3);
                     f.Text = !reader.IsDBNull(4) ?
@@ -63,33 +64,10 @@ namespace WEB2022Apr_P01_T3.DAL
             }
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT * FROM Response";
+            cmd.CommandText = @"SELECT * FROM Feedback";
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    Response r = new Response();
-                    r.ResponseID = reader.GetInt32(0);
-                    r.FeedbackID = reader.GetInt32(1);
-                    r.MemberID = !reader.IsDBNull(2) ?
-                                 reader.GetString(2) : (string?)null;
-                    r.StaffID = !reader.IsDBNull(3) ?
-                                 reader.GetString(3) : (string?)null;
-                    r.DateTimePosted = reader.GetDateTime(4);
-                    r.Text = reader.GetString(5);
 
-                    foreach (FeedbackViewModel f in feedbackList)
-                    {
-                        if (f.FeedbackID == r.FeedbackID)
-                        {
-                            f.ResponseList.Add(r);
-                            break;
-                        }
-                    }
-                }
-            }
             conn.Close();
         }
 
@@ -141,26 +119,26 @@ namespace WEB2022Apr_P01_T3.DAL
 
             if (feedback.Text != null && feedback.ImageFileName != null)
             {
-                cmd.CommandText = @"INSERT INTO Feedback (MemberID, Title, [Text], ImageFileName)
-                                VALUES(@selectedMemberID, @title, @text, @fileName)";
+                cmd.CommandText = @"INSERT INTO Feedback (Email, Title, [Text], ImageFileName)
+                                VALUES(@title, @text, @fileName)";
                 cmd.Parameters.AddWithValue("text", feedback.Text);
                 cmd.Parameters.AddWithValue("fileName", feedback.ImageFileName);
             }
             else if (feedback.Text == null && feedback.ImageFileName != null)
             {
-                cmd.CommandText = @"INSERT INTO Feedback (MemberID, Title, ImageFileName)
-                                VALUES(@selectedMemberID, @title, @fileName)";
+                cmd.CommandText = @"INSERT INTO Feedback (Email, Title, ImageFileName)
+                                VALUES(@title, @fileName)";
                 cmd.Parameters.AddWithValue("fileName", feedback.ImageFileName);
             }
             else if (feedback.Text != null && feedback.ImageFileName == null)
             {
-                cmd.CommandText = @"INSERT INTO Feedback (MemberID, Title, [Text])
-                                VALUES(@selectedMemberID, @title, @text)";
+                cmd.CommandText = @"INSERT INTO Feedback (Email, Title, [Text])
+                                VALUES(@title, @text)";
                 cmd.Parameters.AddWithValue("text", feedback.Text);
             }
 
             cmd.Parameters.AddWithValue("title", feedback.Title);
-            cmd.Parameters.AddWithValue("selectedMemberID", feedback.MemberID);
+            cmd.Parameters.AddWithValue("Email", feedback.Email);
 
             conn.Open();
 

@@ -15,7 +15,7 @@ namespace WEB2022Apr_P01_T3.Models
         public int FeedbackID { get; set; }
 
         [StringLength(9, MinimumLength = 9)]
-        public string? MemberID { get; set; }
+        public string? Email { get; set; }
 
         [StringLength(20)]
         public string? StaffID { get; set; }

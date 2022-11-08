@@ -5,11 +5,7 @@ Use SBLOG
 GO
 
 
-/* Table: dbo.Response */
-if exists (select * from sysobjects 
-  where id = object_id('dbo.Response') and sysstat & 0xf = 3)
-  drop table dbo.Response
-GO
+
 
 /* Table: dbo.Feedback */
 if exists (select * from sysobjects 
@@ -39,11 +35,13 @@ CREATE TABLE dbo.Entries
 )
 GO
 
+
+
 /* Table: dbo.Feedback */
 CREATE TABLE dbo.Feedback
 (
   FeedbackID		int IDENTITY (1,1),
-  Email 			char(9)			NOT NULL, 
+  Email 			text			NOT NULL, 
   DateTimePosted	datetime		NOT NULL 	DEFAULT (getdate()),
   Title				varchar (255)	NOT NULL,	  
   [Text] 			text 			NULL,
@@ -52,3 +50,13 @@ CREATE TABLE dbo.Feedback
 )
 GO
 
+
+/*****  Create records in Feedback Table *****/
+SET IDENTITY_INSERT [dbo].[Feedback] ON
+INSERT [dbo].[Feedback] ([FeedbackID], [Email], [DateTimePosted], [Title], [Text], [ImageFileName]) 
+VALUES (1, 'M00000005@gmail.com', '25-Apr-2022', 'Good Customer Service', 'Sales Personnel Mr Edward Lee at Bishan Bramch was excellent in providing customer service.  He had good knowledge in explaining the design ideas of various fashions, as well as maintaining patient and always wears a smiling face even though I had been fussy in choosing the right fashion for me.', NULL)
+INSERT [dbo].[Feedback] ([FeedbackID], [Email], [DateTimePosted], [Title], [Text], [ImageFileName]) 
+VALUES (2, 'M00000002@gmail.com', '15-May-2022', 'Flaw in Product', 'One out of the three Blue Tiger Sweatshirts I bought today seemed to have the colour of the design faded off after washing.', NULL)
+SET IDENTITY_INSERT [dbo].[Feedback] OFF
+
+SELECT * FROM Feedback

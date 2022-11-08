@@ -11,10 +11,10 @@ namespace WEB2022Apr_P01_T3.Models
     {
         public int FeedbackID { get; set; }
         
-        [Display(Name = "Member ID")]
+        [Display(Name = "Email")]
         [Required]
         [StringLength(9, MinimumLength = 9)]
-        public string MemberID { get; set; }
+        public string Email { get; set; }
 
         public DateTime DateTimePosted { get; set; }
 

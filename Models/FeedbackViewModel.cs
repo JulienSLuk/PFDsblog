@@ -11,7 +11,7 @@ namespace WEB2022Apr_P01_T3.Models
     {
         public int FeedbackID { get; set; }
 
-        public string MemberID { get; set; }
+        public string Email { get; set; }
 
         public DateTime DateTimePosted { get; set; }
 
