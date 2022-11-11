@@ -120,20 +120,20 @@ namespace WEB2022Apr_P01_T3.DAL
             if (feedback.Text != null && feedback.ImageFileName != null)
             {
                 cmd.CommandText = @"INSERT INTO Feedback (Email, Title, [Text], ImageFileName)
-                                VALUES(@title, @text, @fileName)";
+                                VALUES(@email, @title, @text, @fileName)";
                 cmd.Parameters.AddWithValue("text", feedback.Text);
                 cmd.Parameters.AddWithValue("fileName", feedback.ImageFileName);
             }
             else if (feedback.Text == null && feedback.ImageFileName != null)
             {
                 cmd.CommandText = @"INSERT INTO Feedback (Email, Title, ImageFileName)
-                                VALUES(@title, @fileName)";
+                                VALUES(@email, @title, @fileName)";
                 cmd.Parameters.AddWithValue("fileName", feedback.ImageFileName);
             }
             else if (feedback.Text != null && feedback.ImageFileName == null)
             {
                 cmd.CommandText = @"INSERT INTO Feedback (Email, Title, [Text])
-                                VALUES(@title, @text)";
+                                VALUES(@email, @title, @text)";
                 cmd.Parameters.AddWithValue("text", feedback.Text);
             }
 

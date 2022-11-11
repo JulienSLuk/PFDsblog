@@ -60,3 +60,5 @@ VALUES (2, 'M00000002@gmail.com', '15-May-2022', 'Flaw in Product', 'One out of 
 SET IDENTITY_INSERT [dbo].[Feedback] OFF
 
 SELECT * FROM Feedback
+
+DELETE FROM Feedback 

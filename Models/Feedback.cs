@@ -13,6 +13,7 @@ namespace WEB2022Apr_P01_T3.Models
         
         [Display(Name = "Email")]
         [Required]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [StringLength(9, MinimumLength = 9)]
         public string Email { get; set; }
 
