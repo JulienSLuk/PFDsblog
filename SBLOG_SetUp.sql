@@ -6,7 +6,6 @@ GO
 
 
 
-
 /* Table: dbo.Feedback */
 if exists (select * from sysobjects 
   where id = object_id('dbo.Feedback') and sysstat & 0xf = 3)
@@ -14,10 +13,10 @@ if exists (select * from sysobjects
 GO
 
 
-/* Table: dbo.Entries */
+/* Table: dbo.Blog */
 if exists (select * from sysobjects 
-  where id = object_id('dbo.Entries') and sysstat & 0xf = 3)
-  drop table dbo.Entries
+  where id = object_id('dbo.Blog') and sysstat & 0xf = 3)
+  drop table dbo.Blog
 GO
 
 
@@ -25,13 +24,13 @@ GO
 /***                     Creating tables                     ***/
 /***************************************************************/
 
-/* Table: dbo.Entries*/
-CREATE TABLE dbo.Entries
+/* Table: dbo.Blog*/
+CREATE TABLE dbo.Blog
 (
-  EntryID 		int IDENTITY (1,1),
-  EntryTitle  	varchar(255) 	NOT NULL,
-  EntryImage		varchar(255) 	NULL,
-  CONSTRAINT PK_Entries PRIMARY KEY CLUSTERED (EntryID)
+  BlogID 		int IDENTITY (1,1),
+  BlogTitle  	varchar(255) 	NOT NULL,
+  BlogImage		varchar(255) 	NULL,
+  CONSTRAINT PK_Entries PRIMARY KEY CLUSTERED (BlogID)
 )
 GO
 
@@ -61,4 +60,21 @@ SET IDENTITY_INSERT [dbo].[Feedback] OFF
 
 SELECT * FROM Feedback
 
+SELECT * FROM Blog
+
 DELETE FROM Feedback 
+
+/*****  Create records in Product Table *****/
+SET IDENTITY_INSERT [dbo].[Blog] ON 
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (1, 'EMBROIDERED DRESS', '1381043712_1_1_3.jpg')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (2, 'FLORAL PRINT PENCIL SKIRT', '2705273400_1_1_3.jpg')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (3, 'BLUE TIGER SWEATSHIRT', '5644031413_1_1_3.jpg')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (4, 'BLAZER WITH ROLL-UP CUFFS ', '2070239550_1_1_3.jpg')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (5, 'PARROTS T-SHIRT ', '0722437052_1_1_3.jpg')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (6, 'COLORED STRIPED COTTON SWEATER ', '0367420800_1_1_3.jpg')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (7, 'NEON JACKET', '9815401617_1_1_3.jpg')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (8, 'PRINTED CAMOUFLAGE BERMUDAS', '6917485615_1_1_3.jpg')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage]) VALUES (9, 'TOP WITH ASYMMETRIC HEM ', '2669795710_1_1_3.jpg')
+SET IDENTITY_INSERT [dbo].[Blog] OFF
+
+

@@ -9,27 +9,15 @@
         @foreach (var item in Model)
         {
         <div class="productContainer">
-            @{string imageFileName = item.productImage;}
+            @{string imageFileName = item.blogImage;}
             <img src="~/images/products/@imageFileName" alt="" class="productImage" />
             <div class="productMainTextContainer">
                 <ul class="productTextContainer">
                     <li class="productTextHeader">Name:</li>
-                    <li class="productDescription">@item.productName</li>
-                </ul>
-                <ul class="productTextContainer">
-                    <li class="productTextHeader">Price:</li>
-                    <li class="productDescription">$@item.productPrice</li>
-                </ul>
-                <ul class="productTextContainer">
-                    <li class="productTextHeader">Product Effective Date</li>
-                    <li class="productDescription">@item.productEffectiveDate</li>
-                </ul>
-                <ul class="productTextContainer">
-                    <li class="productTextHeader">Product Condition:</li>
-                    <li class="productDescription">@item.productCondition</li>
+                    <li class="productDescription">@item.blogName</li>
                 </ul>
                 <ui class="productTextContainer">
-                    <a class="nav-link updateDelete" asp-area="" asp-controller="ProductManager" asp-action="EditProduct" asp-route-id="@item.productID">Edit</a>
+                    <a class="nav-link updateDelete" asp-area="" asp-controller="ProductManager" asp-action="EditProduct" asp-route-id="@item.blogID">Edit</a>
                 </ui>
             </div>
         </div>

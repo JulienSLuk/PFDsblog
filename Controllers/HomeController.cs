@@ -162,6 +162,16 @@ namespace WEB2022Apr_P01_T3.Controllers
         }
 
 
+        private ProductManagerDAL productContext = new ProductManagerDAL();
+        //if view products, display products
+        public ActionResult ViewProducts()
+        {
+            //get products from product list to display on page
+            List<ProductManager> productList = productContext.GetAllProducts();
+            return View(productList);
+        }
+
+
 
     }
 }
