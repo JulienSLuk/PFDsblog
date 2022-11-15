@@ -18,7 +18,7 @@ namespace WEB2022Apr_P01_T3.Models
 
         public string? blogImage { get; set; }
 
-
+        public string blogCat { get; set; }
 
         public IFormFile photoUpload { get; set; }
 

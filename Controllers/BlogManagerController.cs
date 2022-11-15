@@ -11,10 +11,10 @@ using System.IO;
 
 namespace WEB2022Apr_P01_T3.Controllers
 {
-    public class ProductManagerController : Controller
+    public class BlogManagerController : Controller
     {
         //accessing data from product manager dal
-        private ProductManagerDAL productContext = new ProductManagerDAL();
+        private BlogManagerDAL productContext = new BlogManagerDAL();
         public ActionResult ProductManagerMain() {
             //checking role for product manager
             if ((HttpContext.Session.GetString("Role") == null) || 

@@ -9,12 +9,12 @@ using WEB2022Apr_P01_T3.Models;
 
 namespace WEB2022Apr_P01_T3.DAL
 {
-    public class ProductManagerDAL
+    public class BlogManagerDAL
     {
         private IConfiguration Configuration { get; }
         private SqlConnection conn;
         //Constructor
-        public ProductManagerDAL()
+        public BlogManagerDAL()
         {
             //Read ConnectionString from appsettings.json file
             var builder = new ConfigurationBuilder()
@@ -49,6 +49,7 @@ namespace WEB2022Apr_P01_T3.DAL
                         blogID = reader.GetInt32(0),
                         blogName = reader.GetString(1),
                         blogImage = !reader.IsDBNull(2) ? reader.GetString(2) : null,
+                        blogCat = reader.GetString(3),
                     }
                     ); ;
             }

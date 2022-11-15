@@ -162,7 +162,7 @@ namespace WEB2022Apr_P01_T3.Controllers
         }
 
 
-        private ProductManagerDAL productContext = new ProductManagerDAL();
+        private BlogManagerDAL productContext = new BlogManagerDAL();
         //if view products, display products
         public ActionResult ViewProducts()
         {
