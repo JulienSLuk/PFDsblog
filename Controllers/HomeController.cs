@@ -41,6 +41,8 @@ namespace WEB2022Apr_P01_T3.Controllers
             return View();
         }
 
+
+
         private FeedbackDAL feedbackContext = new FeedbackDAL();
         public IActionResult ViewFeedback()
         {
@@ -50,6 +52,7 @@ namespace WEB2022Apr_P01_T3.Controllers
 
             HttpContext.Session.SetString("NoOfFeedback", feedbackVMList.Count().ToString());
             return View(feedbackVMList);
+
 
         }
 
@@ -162,13 +165,24 @@ namespace WEB2022Apr_P01_T3.Controllers
         }
 
 
-        private BlogManagerDAL productContext = new BlogManagerDAL();
-        //if view products, display products
-        public ActionResult ViewProducts()
+        public ActionResult ViewResponse(int? id)
         {
-            //get products from product list to display on page
-            List<ProductManager> productList = productContext.GetAllProducts();
-            return View(productList);
+            List<FeedbackViewModel> feedbackVMList = new List<FeedbackViewModel>();
+            feedbackVMList = feedbackContext.GetAllFeedbackAndResponses();
+
+            // id == 1 means to only view unresponded feedback, else read all feedbacks
+            if (id == 1)
+            {
+                HttpContext.Session.SetString("RespondedStatus", "All Unresponded Feedbacks (");
+                feedbackVMList.RemoveAll(x => x.ResponseList.Count > 0);
+            }
+            else
+            {
+                HttpContext.Session.SetString("RespondedStatus", "All Feedbacks (");
+            }
+
+            HttpContext.Session.SetString("NoOfFeedback", feedbackVMList.Count().ToString());
+            return View(feedbackVMList);
         }
 
 

@@ -12,6 +12,7 @@ namespace WEB2022Apr_P01_T3.Models
         public int FeedbackID { get; set; }
 
         [Required(ErrorMessage = "Please enter your email")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
         public DateTime DateTimePosted { get; set; }

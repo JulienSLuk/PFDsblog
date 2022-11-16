@@ -2,6 +2,8 @@
 
 <p><a asp-action="CreateFeedback">Create Feedback</a></p>
 
+
+
 @if (Model.ToList().Count() > 0)
 {
     @foreach (var feedback in Model)
@@ -29,38 +31,36 @@
             {
                 <img src="/images/feedback/@feedback.ImageFileName" />
             }
+            <p><a asp-action="ViewResponse">View Details</a></p>
+            @*<p><a asp-action="ViewResponse"
+                  asp-route-id="@feedback.FeedbackID">View Details</a></p>*@
         </div>
 
-        @for (int i = 0; i < feedback.ResponseList.Count; i++)
-        {
-            string responseContainerType = "responseContainerTypeOne";
-            if (i == feedback.ResponseList.Count - 1)
-            {
-                responseContainerType = "responseContainerTypeTwo";
-            }
-
-            Response r = feedback.ResponseList[i];
-            <div class="responseContainer @responseContainerType">
-                <p class="feedbackTitle responseTitle">RE: @feedback.Title</p>
-                @if (r.Email != null)
-                {
-                    <p>Response ID: @r.ResponseID - Posted On: @r.DateTimePosted by @r.Email</p>
-                }
-                else if (r.StaffID != null)
-                {
-                    <p>Response ID: @r.ResponseID - Posted On: @r.DateTimePosted by @r.StaffID</p>
-                }
-                else
-                {
-                    <p>Response ID: @r.ResponseID - Posted On: @r.DateTimePosted</p>
-                }
-                <p>@r.Text</p>
-            </div>
-        }
+        
     }
 }
 
 else
 {
     <span style="color:red">No record found!</span>
+}
+
+
+@section Scripts{
+    <!-- script to redirect user to feedback page -->
+    <script type="text/javascript">
+        function redirect(id) {
+            window.location.href = '/Member/Feedback/' + id;
+        }
+    </script>
+
+    <!-- script for add file -->
+    <script type="text/javascript">
+        let fileInput = document.getElementById('file');
+        let fileLabel = document.getElementById('file-label');
+        fileInput.addEventListener('change', function (event) {
+            let uploadedFile = event.target.files[0].name;
+            fileLabel.textContent = uploadedFile;
+        })
+    </script>
 }

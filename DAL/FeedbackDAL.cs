@@ -63,12 +63,73 @@ namespace WEB2022Apr_P01_T3.DAL
                 f.ResponseList.Clear();
             }
 
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT * FROM Feedback";
+            SqlCommand cmd = conn.CreateCommand();  
+            cmd.CommandText = @"SELECT * FROM Response";
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Response r = new Response();
+                    r.ResponseID = reader.GetInt32(0);
+                    r.FeedbackID = reader.GetInt32(1);
+                    //r.Email = !reader.IsDBNull(2) ?
+                    //             reader.GetString(2) : (string?)null;
+                    //r.StaffID = !reader.IsDBNull(3) ?
+                    //             reader.GetString(3) : (string?)null;
+                    r.DateTimePosted = reader.GetDateTime(2);
+                    r.Text = reader.GetString(3);
 
+                    foreach (FeedbackViewModel f in feedbackList)
+                    {
+                        if (f.FeedbackID == r.FeedbackID)
+                        {
+                            f.ResponseList.Add(r);
+                            break;
+                        }
+                    }
+                }
+            }
             conn.Close();
+        }
+
+        List<Response> viewresponseList = new List<Response>();
+
+        // get all responses and add them into the respective feedback's ResponseList
+        public List<Response> GetResponse(Feedback feedback)
+        {
+            int selectedFeedback = feedback.FeedbackID;
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT * FROM Response WHERE FeedbackID = @selectedfeedbackID";
+            cmd.Parameters.AddWithValue("@selectedfeedbackID", selectedFeedback);
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            //Read all records until the end, save data into a staff list
+            while (reader.Read())
+            {
+                viewresponseList.Add(
+                    new Response
+                    {
+                        ResponseID = reader.GetInt32(0),
+                        FeedbackID = reader.GetInt32(1),
+                        DateTimePosted = reader.GetDateTime(2),
+                        Text = !reader.IsDBNull(3) ?
+                             reader.GetString(3) : (string?)null,
+
+                    }
+                );
+            }
+
+
+            //Close DataReader
+            reader.Close();
+            //Close the database connection
+            conn.Close();
+            return viewresponseList;
         }
 
         // refresh all feedbacks and responses
@@ -85,18 +146,8 @@ namespace WEB2022Apr_P01_T3.DAL
             SqlCommand cmd = conn.CreateCommand();
 
             //using id else statement due to the need of different parameters for different role, MemberID for customer, and StaffID for marketing manager
-            if (role == "Customer")
-            {
-                cmd.CommandText = @"INSERT INTO Response (FeedbackID, MemberID, [Text])
-                                VALUES(@feedbackId, @memberId, @text)";
-                cmd.Parameters.AddWithValue("memberId", userId);
-            }
-            else if (role == "Marketing Manager")
-            {
-                cmd.CommandText = @"INSERT INTO Response (FeedbackID, StaffID, [Text])
-                                VALUES(@feedbackId, @staffId, @text)";
-                cmd.Parameters.AddWithValue("staffId", userId);
-            }
+            cmd.CommandText = @"INSERT INTO Response (FeedbackID, [Text])
+                                VALUES(@feedbackId, @text)";
 
             cmd.Parameters.AddWithValue("@feedbackId", response.FeedbackID);
             cmd.Parameters.AddWithValue("@text", response.Text);

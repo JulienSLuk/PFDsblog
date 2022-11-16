@@ -1,0 +1,33 @@
+﻿@model WEB2022Apr_P01_T3.Models.Response
+
+@{
+    ViewData["Title"] = "Create Response";
+}
+
+<div class="mmCreateResponseContainer">
+    <p class="mmCreateResponseTitle">Create Response</p>
+    <form asp-action="Create">
+        <fieldset class="FormContent">
+            <div class="form-group">
+                <label for="createResponseID">Feedback ID:</label><br />
+                <input type="text" asp-for="FeedbackID" class="form-control mmCreateResponseInput" id="createResponseID"
+                       placeholder="Enter Feedback ID:">
+                <p class="text-danger" style="text-align:center; margin-top: 20px;">@TempData["InvalidFeedbackID"]</p>
+            </div>
+            <div class="form-group">
+                <label for="createResponseText">Enter Response:</label><br />
+                <textarea asp-for="Text" class="form-control mmCreateResponseInput" id="createResponseText"
+                          rows="20" placeholder="Enter Response:"></textarea>
+                <p style="text-align: center; margin-top: 20px;"><span asp-validation-for="Text" class="text-danger"></span></p>
+            </div>
+            <div class="form-check mmCreateResponseCheck">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                <label class="form-check-label" for="flexCheckDefault">
+                    Confirm that the information are correct
+                </label>
+            </div>
+            <p class="text-danger" style="text-align:center;">@TempData["NoDoublePosting"]</p>
+            <button type="submit" class="btn btn-primary" value="Create" id="mmCreateResponse">Submit</button>
+        </fieldset>
+    </form>
+</div>
