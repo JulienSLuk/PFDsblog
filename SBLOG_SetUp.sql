@@ -83,25 +83,26 @@ INSERT [dbo].[Feedback] ([FeedbackID], [Email], [DateTimePosted], [Title], [Text
 VALUES (2, 'M00000002@gmail.com', '15-May-2022', 'Flaw in Product', 'One out of the three Blue Tiger Sweatshirts I bought today seemed to have the colour of the design faded off after washing.', NULL)
 SET IDENTITY_INSERT [dbo].[Feedback] OFF
 
-SELECT * FROM Feedback
 
-SELECT * FROM Blog
-
-SELECT * FROM Response
 
 --DELETE FROM Feedback 
 
 /*****  Create records in Blog Table *****/
 SET IDENTITY_INSERT [dbo].[Blog] ON 
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (1, 'EMBROIDERED DRESS', '1381043712_1_1_3.jpg', 'Financial assistance from MOE on school fees and other expenses, such as meals, textbooks, school attire and transportation. ')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (2, 'FLORAL PRINT PENCIL SKIRT', '2705273400_1_1_3.jpg', 'SGBono is a registered society with Registry Of Societies, Singapore since 21st Nov 2018. Made up of a group of volunteers in Singapore from various backgrounds, they provide free services for low-income families to solve their IT issues. ')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (3, 'BLUE TIGER SWEATSHIRT', '5644031413_1_1_3.jpg', 'This website provides useful information for students that might require a laptop for school.')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (4, 'BLAZER WITH ROLL-UP CUFFS ', '2070239550_1_1_3.jpg', 'The WishingWell is an organisation focused on supporting the current and future needs of disadvantaged children. ')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (5, 'PARROTS T-SHIRT ', '0722437052_1_1_3.jpg', 'Government financial assistance scheme for students who are from low SES families and those whose households have disabled persons.')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (6, 'COLORED STRIPED COTTON SWEATER ', '0367420800_1_1_3.jpg', 'Seedly is an online blog, where people can come together can discuss about anything they want. ')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (1, 'MOE Financial Assistance Schemes', 'MOE_FAS.jpg', 'Financial assistance from MOE on school fees and other expenses, such as meals, textbooks, school attire and transportation. ')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (2, 'SGBono (Laptop loan and tech support)', 'sgBonoPage.jpg', 'SGBono is a registered society with Registry Of Societies, Singapore since 21st Nov 2018. Made up of a group of volunteers in Singapore from various backgrounds, they provide free services for low-income families to solve their IT issues. ')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (3, 'Tech Composition Singaporean school guide', 'techcomposition.jpg', 'This website provides useful information for students that might require a laptop for school.')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (4, 'Wishing Well', 'wishingwell.jpg', 'The WishingWell is an organisation focused on supporting the current and future needs of disadvantaged children. ')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (5, 'IMDA Financial Assistance Schemes ', 'IMDA_FAS.jpg', 'Government financial assistance scheme for students who are from low SES families and those whose households have disabled persons.')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (6, 'Seedly blog', 'SeedlyNeverGoHungry.jpg', 'Seedly is an online blog, where people can come together can discuss about anything they want. ')
 INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (7, 'NEON JACKET', '9815401617_1_1_3.jpg', 'lorem ipsum')
 INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (8, 'PRINTED CAMOUFLAGE BERMUDAS', '6917485615_1_1_3.jpg', 'lorem ipsum')
 INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (9, 'TOP WITH ASYMMETRIC HEM ', '2669795710_1_1_3.jpg', 'lorem ipsum')
 SET IDENTITY_INSERT [dbo].[Blog] OFF
 
 
+SELECT * FROM Feedback
+
+SELECT * FROM Blog
+
+SELECT * FROM Response
