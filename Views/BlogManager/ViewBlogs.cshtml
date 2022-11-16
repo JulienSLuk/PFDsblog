@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WEB2022Apr_P01_T3.Models.ProductManager>
 @{
-    ViewData["Title"] = "ViewProducts";
+    ViewData["Title"] = "ViewBlogs";
 }
 
 @if (Model.ToList().Count > 0)
@@ -13,12 +13,9 @@
             <img src="~/images/products/@imageFileName" alt="" class="productImage" />
             <div class="productMainTextContainer">
                 <ul class="productTextContainer">
-                    <li class="productTextHeader">Name:</li>
-                    <li class="productDescription">@item.blogName</li>
+                    <li class="productTextHeader">@item.blogName</li>
+                    <li class="productDescription">@item.blogDesc</li>
                 </ul>
-                <ui class="productTextContainer">
-                    <a class="nav-link updateDelete" asp-area="" asp-controller="ProductManager" asp-action="EditProduct" asp-route-id="@item.blogID">Edit</a>
-                </ui>
             </div>
         </div>
         }
