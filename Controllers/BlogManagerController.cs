@@ -141,6 +141,8 @@ namespace WEB2022Apr_P01_T3.Controllers
                     break;
                 }
             }
+            feedbackContext.AddResponse(response, "Marketing Manager", "Marketing");
+            //return RedirectToAction("Index", "MarketingManagerHome");
 
             return View();
         }
