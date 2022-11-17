@@ -81,6 +81,37 @@ namespace WEB2022Apr_P01_T3.DAL
 
         }
 
+        public int UpdateProduct(ProductManager product, int productID)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"UPDATE Blog SET ProductTitle = @productName, ProductImage = @productImage, Price = @productPrice,
+                                EffectiveDate = @productEffectiveDate, Obsolete = @productCondition WHERE ProductID = @productID";
+
+            cmd.Parameters.AddWithValue("@productName", product.blogName);
+
+            if (product.photoUpload == null)
+            {
+                cmd.Parameters.AddWithValue("@productImage", "null-picture.jpg");
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@productImage", product.blogImage);
+            }
+
+            //checking product condition, if new database should store 1 and if obsolete, database should store 0
+
+            cmd.Parameters.AddWithValue("@productID", productID);
+
+            conn.Open();
+
+            int count = cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            return count;
+        }
+
 
     }
 }

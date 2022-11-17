@@ -3,32 +3,20 @@
 @{
     ViewData["Title"] = "EditProduct";
 }
-@*<div class="editContainer">
+<div class="editContainer">
     <div id="login-container">
         <form asp-action="EditProduct" enctype="multipart/form-data">
             <fieldset class="loginFieldset">
                 <div>
-                    <input asp-for="productName" class="inputText" placeholder="Product Name" />
-                    <span asp-validation-for="productName" class="text-danger"></span>
+                    <input asp-for="blogName" class="inputText" placeholder="Product Name" />
+                    <span asp-validation-for="blogName" class="text-danger"></span>
                 </div>
 
                 <div>
-                    <img src="~/images/products/@Model.productImage" alt="" class="productImage" />
+                    <img src="~/images/products/@Model.blogImage" alt="" class="productImage" />
                 </div>
 
-                <div>
-                    <input asp-for="productPrice" class="inputText" placeholder="Product Price" />
-                    <span asp-validation-for="productPrice" class="text-danger"></span>
-                </div>
 
-                <div>
-                    <input type="date" asp-for="productEffectiveDate" class="inputText" placeholder="Product Effective Date" />
-                    <span asp-validation-for="productEffectiveDate" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <select asp-for="productCondition" asp-items="@ViewData["Conditions"] as List<SelectListItem>" class="inputText"></select>
-                </div>
 
                 <div>
                     <input asp-for="photoUpload" accept="image/jpeg" class="inputText" style="padding-top: 0.3vw" placeholder="Add photo (jpg format)">
@@ -45,5 +33,5 @@
             </fieldset>
         </form>
     </div>
-</div>*@
+</div>
 
