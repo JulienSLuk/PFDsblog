@@ -167,8 +167,27 @@ namespace WEB2022Apr_P01_T3.Controllers
 
         public ActionResult ViewResponse(int? id)
         {
+            //List<Response> responseList = new List<Response>() ;              working but fed null value
+            //if(id != null)
+            //{
+            //    feedbackContext.GetResponseByID(id.Value);
+            //}
+
+
             List<FeedbackViewModel> feedbackVMList = new List<FeedbackViewModel>();
             feedbackVMList = feedbackContext.GetAllFeedbackAndResponses();
+
+            //Feedback feedback = feedbackContext.GetSpecificFeedback(id.Value);
+            //FeedbackViewModel feedbackVM = new FeedbackViewModel()
+            //{
+            //    FeedbackID = feedback.FeedbackID,
+            //    DateTimePosted = feedback.DateTimePosted,
+            //    Email = feedback.Email,
+            //    Title = feedback.Title,
+            //    Text = feedback.Text,
+            //    ResponseList = responseList
+            //};
+
 
             // id == 1 means to only view unresponded feedback, else read all feedbacks
             if (id == 1)
@@ -183,6 +202,7 @@ namespace WEB2022Apr_P01_T3.Controllers
 
             HttpContext.Session.SetString("NoOfFeedback", feedbackVMList.Count().ToString());
             return View(feedbackVMList);
+            //return View(responseList);
         }
 
 
