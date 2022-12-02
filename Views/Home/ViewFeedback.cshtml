@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WEB2022Apr_P01_T3.Models.FeedbackViewModel>
+
+<p><a asp-action="CreateFeedback">Create Feedback</a></p>
+
+
+
+@if (Model.ToList().Count() > 0)
+{
+    @foreach (var feedback in Model)
+    {
+        //Make use of different container type based on whether feedback had been responsed
+        string feedbackContainerType = "feedbackContainer";
+        if (feedback.ResponseList.Count == 0)
+        {
+            feedbackContainerType = "feedbackContainer feedbackContainerSpecial";
+        }
+
+        <div class="@feedbackContainerType">
+            @if (feedback.ResponseList.Count == 0)
+            {
+                <p class="notResponded">Not Responded</p>
+            }
+            else
+            {
+                <p class="responded"></p>
+            }
+            <p class="feedbackTitle">@feedback.Title</p>
+            <p>Feedback ID: @feedback.FeedbackID - Posted On: @feedback.DateTimePosted by @feedback.Email</p>
+            <p>@feedback.Text</p>
+            @if (feedback.ImageFileName != null)
+            {
+                <img src="/images/feedback/@feedback.ImageFileName" />
+            }
+            <p><a asp-action="ViewResponse">View Details</a></p>
+            @*<p><a asp-action="ViewResponse"
+                  asp-route-id="@feedback.FeedbackID">View Details</a></p>*@
+        </div>
+
+        
+    }
+}
+
+else
+{
+    <span style="color:red">No record found!</span>
+}
+
+
+@section Scripts{
+    <!-- script to redirect user to feedback page -->
+    <script type="text/javascript">
+        function redirect(id) {
+            window.location.href = '/Member/Feedback/' + id;
+        }
+    </script>
+
+    <!-- script for add file -->
+    <script type="text/javascript">
+        let fileInput = document.getElementById('file');
+        let fileLabel = document.getElementById('file-label');
+        fileInput.addEventListener('change', function (event) {
+            let uploadedFile = event.target.files[0].name;
+            fileLabel.textContent = uploadedFile;
+        })
+    </script>
+}

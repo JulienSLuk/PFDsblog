@@ -1,0 +1,44 @@
+﻿<nav class="navbar navbar-dark navbar-expand-lg">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+        <img src="~/images/SBlog (1).png" class="logo" />
+    </a>
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Login">
+        <img src="~/images/admin.jpg" class="logo" />
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="wrapper">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ViewFeedback">Feedback</a>
+                </li>
+                <li class="nav-item dropdown" style="margin-right:10px">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" color:white">
+                        Categories
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" asp-area="" asp-controller="BlogManager" asp-action="ViewBlogs">All Organisations</a>
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a onclick="setUserLoginType('Lorem Ipsum')" id="chosenCustomerLogin" class="dropdown-item" asp-area="" asp-controller="More" asp-action="More">Lorem Ipsum</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+   function setUserLoginType(role) {
+        localStorage.setItem("LoginType", role);
+   }
+</script>
