@@ -7,13 +7,24 @@
     <section class="content container">
         <div class="row">
             <div class="col-6">
-                <p>
-                    Hi welcome
-                </p>
-            </div>
-            <p><a asp-controller="BlogManager" asp-action="ViewBlogsAdmin">Blog Actions</a></p>
-            <p><a asp-controller="BlogManager" asp-action="ViewFeedbackAdmin">Feedback Actions</a></p>
+                <div class="adminviewwelcome">
+                    <h1>
+                        Hi Welcome<br>
+                    </h1>
+                    <p>
+                        What would you like to do today?<br>
+                    </p>
 
+                </div>          
+            </div>
+            <div class="adminviewbody">
+                <div class="button-85">
+                    <p><a asp-controller="BlogManager" asp-action="ViewBlogsAdmin">Blog Actions</a></p>
+                </div>
+                <div class="button-85">
+                    <p><a asp-controller="BlogManager" asp-action="ViewFeedbackAdmin">Feedback Actions</a></p>
+                </div>
+            </div>
         </div>
     </section>
 </section>
