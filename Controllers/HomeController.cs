@@ -69,6 +69,10 @@ namespace WEB2022Apr_P01_T3.Controllers
         public async Task<ActionResult> CreateFeedback(FeedbackViewModel feedbackVM)
         {
 
+            //feedbackVM.Email = HttpContext.Session.GetString("Email");
+            //feedbackVM.FeedbackID = feedbackContext.GetAllFeedbackAndResponses().Count + 1;
+
+            //List<Customer> cusList = customerContext.GetAllCustomer();
             int newFeedbackId = feedbackContext.GetAllFeedbackAndResponses().Count() + 1;
 
             if (feedbackVM.fileToUpload != null &&
@@ -107,14 +111,32 @@ namespace WEB2022Apr_P01_T3.Controllers
             if (ModelState.IsValid)
             {
                 feedbackContext.Add(feedbackVM);
+                //to be change to desired destination
+                //return RedirectToAction("CustomerMain", "Customer");
                 return View();
             }
 
+            //to be change to desired destination
             return View(feedbackVM);
         }
 
 
+        //[HttpPost]
+        //public ActionResult Login(IFormCollection formData)
+        //{
+        //    // Read inputs from textboxes
+        //    // Email address converted to lowercase
+        //    string password = formData["txtPassword"].ToString();
+        //    if (password == "PDFadmin123")
+        //    {
+        //        return RedirectToAction("AdminView");
+        //    }
+        //    // Store an error message in TempData for display at the index view 
+        //    TempData["Message"] = "Invalid Login Credentials!";
 
+        //    // Redirect user back to the index view through an action
+        //    return View();
+        //}
 
         public ActionResult LogOut()
         {
@@ -141,5 +163,49 @@ namespace WEB2022Apr_P01_T3.Controllers
             // Redirect user back to the index view through an action
             return View();
         }
+
+
+        public ActionResult ViewResponse(int? id)
+        {
+            //List<Response> responseList = new List<Response>() ;              working but fed null value
+            //if(id != null)
+            //{
+            //    feedbackContext.GetResponseByID(id.Value);
+            //}
+
+
+            List<FeedbackViewModel> feedbackVMList = new List<FeedbackViewModel>();
+            feedbackVMList = feedbackContext.GetAllFeedbackAndResponses();
+
+            //Feedback feedback = feedbackContext.GetSpecificFeedback(id.Value);
+            //FeedbackViewModel feedbackVM = new FeedbackViewModel()
+            //{
+            //    FeedbackID = feedback.FeedbackID,
+            //    DateTimePosted = feedback.DateTimePosted,
+            //    Email = feedback.Email,
+            //    Title = feedback.Title,
+            //    Text = feedback.Text,
+            //    ResponseList = responseList
+            //};
+
+
+            // id == 1 means to only view unresponded feedback, else read all feedbacks
+            if (id == 1)
+            {
+                HttpContext.Session.SetString("RespondedStatus", "All Unresponded Feedbacks (");
+                feedbackVMList.RemoveAll(x => x.ResponseList.Count > 0);
+            }
+            else
+            {
+                HttpContext.Session.SetString("RespondedStatus", "All Feedbacks (");
+            }
+
+            HttpContext.Session.SetString("NoOfFeedback", feedbackVMList.Count().ToString());
+            return View(feedbackVMList);
+            //return View(responseList);
+        }
+
+
+
     }
 }

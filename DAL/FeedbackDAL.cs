@@ -140,6 +140,25 @@ namespace WEB2022Apr_P01_T3.DAL
             return feedbackList;
         }
 
+        // add response
+        public void AddResponse(Response response, String role, string userId)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            //using id else statement due to the need of different parameters for different role, MemberID for customer, and StaffID for marketing manager
+            cmd.CommandText = @"INSERT INTO Response (FeedbackID, [Text])
+                                VALUES(@feedbackId, @text)";
+
+            cmd.Parameters.AddWithValue("@feedbackId", response.FeedbackID);
+            cmd.Parameters.AddWithValue("@text", response.Text);
+
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+        }
 
         
 

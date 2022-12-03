@@ -122,6 +122,30 @@ namespace WEB2022Apr_P01_T3.Controllers
             return RedirectToAction("ViewBlogsAdmin", "BlogManager");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Response response)
+        {
+            // get all feedback and responses for corresponding feedback, all feedback sorted by DateTimePosted in descending order then followed by sorting FeedbackID in descending order
+            List<FeedbackViewModel> feedbackList = feedbackContext.GetAllFeedbackAndResponses();
+            List<Response> responseList = new List<Response>();
+
+            // find if FeedbackID matches any of the feedback's FeedbackID in the list
+            bool validFeedbackId = false;
+            foreach (FeedbackViewModel fv in feedbackList)
+            {
+                if (fv.FeedbackID == response.FeedbackID)
+                {
+                    responseList = fv.ResponseList;
+                    validFeedbackId = true;
+                    break;
+                }
+            }
+            feedbackContext.AddResponse(response, "Marketing Manager", "Marketing");
+            //return RedirectToAction("Index", "MarketingManagerHome");
+
+            return View();
+        }
 
 
     }
