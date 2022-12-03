@@ -35,5 +35,13 @@ namespace WEB2022Apr_P01_T3.Controllers
             List<ProductManager> productList = productContext.GetTechProducts();
             return View(productList);
         }
+
+
+        public ActionResult ViewFinSchBlogs()
+        {
+            //get products from product list to display on page
+            List<ProductManager> productList = productContext.GetFinSchProducts();
+            return View(productList);
+        }
     }
 }

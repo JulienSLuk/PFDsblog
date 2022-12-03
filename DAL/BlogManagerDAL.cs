@@ -93,6 +93,38 @@ namespace WEB2022Apr_P01_T3.DAL
 
         }
 
+        public List<ProductManager> GetFinSchProducts()
+        {
+
+            //sql command to select all products based on productid
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT * FROM Blog WHERE BlogCat = 'Financial Scheme' ORDER BY BlogID";
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+
+            List<ProductManager> productList = new List<ProductManager>();
+
+            //add products gathered from database into productlist
+            while (reader.Read())
+            {
+                productList.Add(
+                    new ProductManager
+                    {
+                        blogID = reader.GetInt32(0),
+                        blogName = reader.GetString(1),
+                        blogImage = !reader.IsDBNull(2) ? reader.GetString(2) : null,
+                        blogDesc = reader.GetString(3),
+                        blogCat = reader.GetString(4),
+                    }
+                    ); ;
+            }
+            reader.Close();
+            conn.Close();
+            return productList;
+
+        }
+
         //add product
         public void Add(ProductManager product)
         {
