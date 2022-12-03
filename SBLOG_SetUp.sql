@@ -37,7 +37,7 @@ CREATE TABLE dbo.Blog
   BlogTitle  	varchar(255) 	NOT NULL,
   BlogImage		varchar(255) 	NULL,
   BlogDesc      text            NULL,
-  --BlogCat		varchar(255) 	NOT NULL,
+  BlogCat		varchar(255) 	NOT NULL,
 )
 GO
 
@@ -89,20 +89,22 @@ SET IDENTITY_INSERT [dbo].[Feedback] OFF
 
 /*****  Create records in Blog Table *****/
 SET IDENTITY_INSERT [dbo].[Blog] ON 
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (1, 'MOE Financial Assistance Schemes', 'MOE_FAS.png', 'Financial assistance from MOE on school fees and other expenses, such as meals, textbooks, school attire and transportation. ')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (2, 'SGBono (Laptop loan and tech support)', 'sgBonoPage.png', 'SGBono is a registered society with Registry Of Societies, Singapore since 21st Nov 2018. Made up of a group of volunteers in Singapore from various backgrounds, they provide free services for low-income families to solve their IT issues. ')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (3, 'Tech Composition Singaporean school guide', 'techcomposition.png', 'This website provides useful information for students that might require a laptop for school.')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (4, 'Wishing Well', 'wishingwell.png', 'The WishingWell is an organisation focused on supporting the current and future needs of disadvantaged children. ')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (5, 'IMDA Financial Assistance Schemes ', 'IMDA_FAS.png', 'Government financial assistance scheme for students who are from low SES families and those whose households have disabled persons.')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (6, 'Seedly blog', 'SeedlyNeverGoHungry.png', 'Seedly is an online blog, where people can come together can discuss about anything they want. ')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (7, 'NEON JACKET', '9815401617_1_1_3.jpg', 'lorem ipsum')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (8, 'PRINTED CAMOUFLAGE BERMUDAS', '6917485615_1_1_3.jpg', 'lorem ipsum')
-INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc]) VALUES (9, 'TOP WITH ASYMMETRIC HEM ', '2669795710_1_1_3.jpg', 'lorem ipsum')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (1, 'MOE Financial Assistance Schemes', 'MOE_FAS.png', 'Financial assistance from MOE on school fees and other expenses, such as meals, textbooks, school attire and transportation. ', 'Financial Scheme')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (2, 'SGBono (Laptop loan and tech support)', 'sgBonoPage.png', 'SGBono is a registered society with Registry Of Societies, Singapore since 21st Nov 2018. Made up of a group of volunteers in Singapore from various backgrounds, they provide free services for low-income families to solve their IT issues. ', 'Tech')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (3, 'Tech Composition Singaporean school guide', 'techcomposition.png', 'This website provides useful information for students that might require a laptop for school.', 'Tech')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (4, 'Wishing Well', 'wishingwell.png', 'The WishingWell is an organisation focused on supporting the current and future needs of disadvantaged children. ', 'Financial Scheme')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (5, 'IMDA Financial Assistance Schemes ', 'IMDA_FAS.png', 'Government financial assistance scheme for students who are from low SES families and those whose households have disabled persons.', 'Financial Scheme')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (6, 'Seedly blog', 'SeedlyNeverGoHungry.png', 'Seedly is an online blog, where people can come together can discuss about anything they want. ', 'Financial Scheme')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (7, 'NEON JACKET', '9815401617_1_1_3.jpg', 'lorem ipsum', 'misc')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (8, 'PRINTED CAMOUFLAGE BERMUDAS', '6917485615_1_1_3.jpg', 'lorem ipsum', 'lorem ipsum')
+INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (9, 'TOP WITH ASYMMETRIC HEM ', '2669795710_1_1_3.jpg', 'lorem ipsum', 'lorem ipsum')
 SET IDENTITY_INSERT [dbo].[Blog] OFF
 
 
 SELECT * FROM Feedback
 
 SELECT * FROM Blog
+WHERE BlogCat='Financial Scheme'
+ORDER BY BlogID;
 
 SELECT * FROM Response
