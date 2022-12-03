@@ -2,50 +2,74 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="homeContainer">
-    <img src="~/images/home/Main.jpg" alt="homePage" class="imageContainer" />
-    <div class="textContainer">
-        <p class="number1">Your One-stop website </p>
-        <p class="number1">to secure supplementary aid!</p>
-        <p class="location">We handle fact-checking charitable organizations for you!</p>
+<div class="parallax">
+    <div class="homeContainer">
+        <style>
+            body, html {
+                height: 100%;
+            }
+
+            .parallax {
+                /* The image used */
+                background-image: url('../images/home/Main.jpg');
+                /* Full height */
+                height: 100%;
+                /* Create the parallax scrolling effect */
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+        <div class="textContainer">
+            <p class="number1">Your One-stop website </p>
+            <p class="number1">to secure supplementary aid!</p>
+            <p class="location">We handle fact-checking charitable organizations for you!</p>
+        </div>
     </div>
 </div>
 
 
-<h2 class="header" style="background-color: #3b3b3b; color: white;">What we do</h2>
+    <div style="height: 1000px; background-color: #3b3b3b; font-size: 36px ">
+        <h2 class="header" style="background-color: #3b3b3b; color: white;">What we do</h2>
 
-<div class="about">
-    <div class="aboutUsContainer">
-        <lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_3afizop1.json"
-                       background="transparent" style="width: 15vw; margin-left: 2vw;" speed="1" class="photoHolder"
-                       loop autoplay></lottie-player>
-        <p class="aboutUsText">
-            We personally verify donation drives for their authenticity
-        </p>
-    </div>
-    <div class="aboutUsContainer">
-        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_xgemoqmm.json"
-                       background="transparent" speed="1" class="photoHolder" loop autoplay></lottie-player>
-        <p class="aboutUsText">
-            We partner with organizations dedicated to helping out those in need
-        </p>
-    </div>
-    <div class="aboutUsContainer">
-        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_0qba4tvf.json"
-                       background="transparent" style="width: 17vw; margin-left: 1.2vw;" speed="1" loop autoplay class="photoHolder"></lottie-player>
-        <p class="aboutUsText">
-            We are an information resource that is easily accessible for Singaporeans
-        </p>
-    </div>
-    <div class="aboutUsContainer">
-        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_4XmSkB.json"
-                       background="transparent" style="width: 200px; margin-left: 2vw;" speed="1" loop autoplay class="aboutUsPhoto"></lottie-player>
-        <p class="aboutUsText">
-            We focus on supplementary items needed for education
-        </p>
+        <div class="about">
+            <div class="aboutUsContainer">
+                <lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_3afizop1.json"
+                               background="transparent" style="width: 15vw; margin-left: 2vw;" speed="1" class="photoHolder"
+                               loop autoplay></lottie-player>
+                <p class="aboutUsText">
+                    We personally verify donation drives for their authenticity
+                </p>
+            </div>
+            <div class="aboutUsContainer">
+                <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_xgemoqmm.json"
+                               background="transparent" speed="1" class="photoHolder" loop autoplay></lottie-player>
+                <p class="aboutUsText">
+                    We partner with organizations dedicated to helping out those in need
+                </p>
+            </div>
+            <div class="aboutUsContainer">
+                <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_0qba4tvf.json"
+                               background="transparent" style="width: 17vw; margin-left: 1.2vw;" speed="1" loop autoplay class="photoHolder"></lottie-player>
+                <p class="aboutUsText">
+                    We are an information resource that is easily accessible for Singaporeans
+                </p>
+            </div>
+            <div class="aboutUsContainer">
+                <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_4XmSkB.json"
+                               background="transparent" style="width: 200px; margin-left: 2vw;" speed="1" loop autoplay class="aboutUsPhoto"></lottie-player>
+                <p class="aboutUsText">
+                    We focus on supplementary items needed for education
+                </p>
+            </div>
+        </div>
     </div>
 
 
-    
+
+
+
+
 
 
