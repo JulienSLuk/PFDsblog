@@ -23,6 +23,7 @@ namespace WEB2022Apr_P01_T3.Models
         public IFormFile photoUpload { get; set; }
 
         public string blogDesc { get; set; }
+        public string blogCat { get; set; }
 
 
     }
