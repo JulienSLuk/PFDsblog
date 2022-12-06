@@ -1,3 +1,13 @@
+/*======================================================*/
+/*  Created in 2022                                     */
+/*  PFD 2022 October Semester					        */
+/*  Diploma in IT                                       */
+/*                                                      */
+/*  Database Script for setting up the database         */
+/*  required for PFD Assignment.                        */
+/*======================================================*/
+
+
 --Create Database SBLOG
 --GO
 
@@ -23,6 +33,12 @@ GO
 if exists (select * from sysobjects 
   where id = object_id('dbo.Response') and sysstat & 0xf = 3)
   drop table dbo.Response
+GO
+
+/* Table: dbo.Admin */
+if exists (select * from sysobjects 
+  where id = object_id('dbo.Admin') and sysstat & 0xf = 3)
+  drop table dbo.Admin
 GO
 
 
@@ -75,6 +91,21 @@ CREATE TABLE dbo.Response
 GO
 
 
+/* Table: dbo.Admin */
+CREATE TABLE dbo.Admin
+(
+  AdminUserName		varchar(20) 	NOT NULL,
+  AdminPassword	    varchar(20)     NOT NULL	DEFAULT ('DefaultP@ssw0rd'),       
+  CONSTRAINT PK_Admin PRIMARY KEY CLUSTERED (AdminUserName)
+)
+GO
+
+
+/***************************************************************/
+/***              Load the tables with sample data           ***/
+/***************************************************************/
+
+
 /*****  Create records in Feedback Table *****/
 SET IDENTITY_INSERT [dbo].[Feedback] ON
 INSERT [dbo].[Feedback] ([FeedbackID], [Email], [DateTimePosted], [Title], [Text], [ImageFileName]) 
@@ -100,6 +131,19 @@ INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) 
 INSERT [dbo].[Blog] ([BlogID], [BlogTitle], [BlogImage], [BlogDesc], [BlogCat]) VALUES (9, 'TOP WITH ASYMMETRIC HEM ', '2669795710_1_1_3.jpg', 'lorem ipsum', 'lorem ipsum')
 SET IDENTITY_INSERT [dbo].[Blog] OFF
 
+
+
+
+
+/*****  Create records in Player Table *****/
+INSERT [dbo].[Admin] ([AdminUserName], [AdminPassword]) VALUES ('Gareth', 'pass1234')
+INSERT [dbo].[Admin] ([AdminUserName], [AdminPassword]) VALUES ('Jun Xiong', 'AbC@123#')
+INSERT [dbo].[Admin] ([AdminUserName], [AdminPassword]) VALUES ('Ming Feng', 'pgPass')
+INSERT [dbo].[Admin] ([AdminUserName], [AdminPassword]) VALUES ('Julien', 'xyz')
+INSERT [dbo].[Admin] ([AdminUserName], [AdminPassword]) VALUES ('Bryan', 'pass1234')
+
+
+SELECT * FROM Admin
 
 SELECT * FROM Feedback
 
