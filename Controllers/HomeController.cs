@@ -121,48 +121,7 @@ namespace WEB2022Apr_P01_T3.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult Login(IFormCollection formData)
-        //{
-        //    // Read inputs from textboxes
-        //    // Email address converted to lowercase
-        //    string password = formData["txtPassword"].ToString();
-        //    if (password == "PDFadmin123")
-        //    {
-        //        return RedirectToAction("AdminView");
-        //    }
-        //    // Store an error message in TempData for display at the index view 
-        //    TempData["Message"] = "Invalid Login Credentials!";
 
-        //    // Redirect user back to the index view through an action
-        //    return View();
-        //}
-
-        public ActionResult LogOut()
-        {
-            // Clear all key-values pairs stored in session state 
-            HttpContext.Session.Clear();
-            // Call the Index action of Home controller 
-            return RedirectToAction("Index", "Home");
-        }
-
-
-        public IActionResult Login(IFormCollection formData)
-        {
-            // Read inputs from textboxes
-            // Email address converted to lowercase
-            string password = formData["txtPassword"].ToString();
-            if (password == "123")
-            {
-                return View("AdminView");
-            }
-
-            // Store an error message in TempData for display at the index view 
-            TempData["Message"] = "Invalid Login Credentials!";
-
-            // Redirect user back to the index view through an action
-            return View();
-        }
 
 
         public ActionResult ViewResponse(int? id)

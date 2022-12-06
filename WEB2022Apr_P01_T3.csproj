@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Admin\" />
     <Folder Include="wwwroot\images\contactUs\" />
     <Folder Include="wwwroot\images\feedback\" />
   </ItemGroup>
