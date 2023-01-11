@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\julie\\Documents\\Ngee Ann\\Year 2 Semester 2\\PFD\\SbloG\\SbloG\\SbloG.csproj": {}
+    "C:\\Users\\Gareth\\OneDrive - Ngee Ann Polytechnic\\Desktop\\SbloG2\\SbloG\\SbloG\\SbloG.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julie\\Documents\\Ngee Ann\\Year 2 Semester 2\\PFD\\SbloG\\SbloG\\SbloG.csproj": {
+    "C:\\Users\\Gareth\\OneDrive - Ngee Ann Polytechnic\\Desktop\\SbloG2\\SbloG\\SbloG\\SbloG.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julie\\Documents\\Ngee Ann\\Year 2 Semester 2\\PFD\\SbloG\\SbloG\\SbloG.csproj",
+        "projectUniqueName": "C:\\Users\\Gareth\\OneDrive - Ngee Ann Polytechnic\\Desktop\\SbloG2\\SbloG\\SbloG\\SbloG.csproj",
         "projectName": "SbloG",
-        "projectPath": "C:\\Users\\julie\\Documents\\Ngee Ann\\Year 2 Semester 2\\PFD\\SbloG\\SbloG\\SbloG.csproj",
-        "packagesPath": "C:\\Users\\julie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julie\\Documents\\Ngee Ann\\Year 2 Semester 2\\PFD\\SbloG\\SbloG\\obj\\",
+        "projectPath": "C:\\Users\\Gareth\\OneDrive - Ngee Ann Polytechnic\\Desktop\\SbloG2\\SbloG\\SbloG\\SbloG.csproj",
+        "packagesPath": "C:\\Users\\Gareth\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gareth\\OneDrive - Ngee Ann Polytechnic\\Desktop\\SbloG2\\SbloG\\SbloG\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\julie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Gareth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -57,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
