@@ -169,6 +169,9 @@ INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDes
 INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (4, 'Wishing Well', 'wishingwell.png', 'The WishingWell is an organisation focused on supporting the current and future needs of disadvantaged children. ', 'Financial Scheme', '0')
 INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (5, 'IMDA Financial Assistance Schemes ', 'IMDA_FAS.png', 'Government financial assistance scheme for students who are from low SES families and those whose households have disabled persons.', 'Financial Scheme', '0')
 INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (6, 'Seedly blog', 'SeedlyNeverGoHungry.png', 'Seedly is an online blog, where people can come together can discuss about anything they want. ', 'Financial Scheme', '1')
+INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (7, 'NEON JACKET', '9815401617_1_1_3.jpg', 'lorem ipsum', 'misc', '1')
+INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (8, 'PRINTED CAMOUFLAGE BERMUDAS', '6917485615_1_1_3.jpg', 'lorem ipsum', 'lorem ipsum', '1')
+INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (9, 'TOP WITH ASYMMETRIC HEM ', '2669795710_1_1_3.jpg', 'lorem ipsum', 'lorem ipsum', '1')
 SET IDENTITY_INSERT [dbo].[Product] OFF
 
 

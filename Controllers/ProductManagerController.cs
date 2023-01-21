@@ -53,6 +53,15 @@ namespace WEB2022_ZZFashion.Controllers
 
         }
 
+        public ActionResult Create(int id)
+        {
+            Product product = new Product
+            {
+
+            };
+            return View(product);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product)
