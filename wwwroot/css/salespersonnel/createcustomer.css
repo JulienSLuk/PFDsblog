@@ -1,0 +1,16 @@
+﻿.body {
+	height: 92vh;
+	width: 100vw;
+}
+
+.content {
+	margin-top: 10vh;
+}
+
+.row{
+	margin-bottom: 2rem;
+}
+
+#btnsubmit{
+	float:right;
+}

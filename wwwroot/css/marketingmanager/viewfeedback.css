@@ -1,0 +1,49 @@
+﻿
+
+
+/* feedback css */
+
+.feedback-inner-container {
+    margin: 1.5rem;
+}
+
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* content css */
+.content-holder {
+    margin-top: 15px;
+}
+
+.button-reply {
+    margin-left: 95%;
+    border: none;
+    text-decoration: none;
+    color: darkred;
+    background: none;
+    font-weight: bold;
+}
+.button-edit {
+    margin-left: 90%;
+    border: none;
+    text-decoration: none;
+    color: darkred;
+    background: none;
+    font-weight: bold;
+}
+.button-delete {
+    margin-left:2%;
+    border: none;
+    text-decoration: none;
+    color: darkred;
+    background: none;
+    font-weight: bold;
+}
+.response-header {
+    display: flex;
+    justify-content: space-around;
+}
+

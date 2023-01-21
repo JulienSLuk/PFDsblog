@@ -1,0 +1,102 @@
+﻿body {
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.PageTitle {
+    text-align: center;
+    font-weight: bold;
+    color: darkred;
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+
+.button-reply {
+    border: 5px solid darkred;
+    text-decoration: none;
+    color: white;
+    background: darkred;
+    font-weight: bold;
+}
+
+.button-save {
+    border: 5px solid darkred;
+    text-decoration: none;
+    color: white;
+    background: darkred;
+    font-weight: bold;
+}
+
+.FormContent {
+    padding: 10px;
+    margin: auto;
+    width: 70%;
+    height: fit-content;
+}
+
+.col-form-label {
+    text-align: right;
+    font-weight: bold;
+}
+
+#mainContainer {
+    border: 1px solid red;
+    margin: auto;
+    width: 80%;
+    padding: 4px;
+}
+
+fieldset {
+    border-radius: 10px;
+    padding: 5px;
+    background-color:#F2F3F4;
+}
+
+    fieldset legend {
+        padding: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        color: floralwhite;
+        width: auto;
+    }
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.myButton {
+    border: 2px solid dodgerblue;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none
+}
+
+@media screen and (max-width: 918px) {
+    .loginFieldset {
+        min-height: 0px;
+        width: 280px;
+    }
+}
+
+@media screen and (max-width: 772px) {
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .loginFieldset {
+        min-height: 0px;
+        width: 95%;
+    }
+
+    #mainContainer {
+        padding: 0;
+        border: none;
+    }
+}

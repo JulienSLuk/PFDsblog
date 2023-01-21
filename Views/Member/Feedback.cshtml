@@ -1,0 +1,112 @@
+﻿@model WEB2022_ZZFashion.Models.Feedback
+@{
+    ViewData["Title"] = "View Feedback";
+    ViewData["css"] = "customer/feedback.css";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </head>
+    <body>
+        <div class="container">
+
+            <h3>View Feedback</h3>
+            <br />
+            <!-- container for content -->
+            <div class="outer-container shadow p-1 mb-5 bg-white rounded">
+                <div class="inner-container">
+
+                    <!----------------------------- Display the feedback ----------------------------->
+
+                    <div>
+                        <h4>Feedback</h4>
+                    </div>
+                    <div class="content-holder">
+
+                        <div class="content-container">
+
+                            <!-- title & date time -->
+                            <div class="title-date-content">
+                                <h5>@Model.Title</h5>
+                                <span>@Model.DateTimePosted.ToString("dd/MM/yyyy")</span>
+                            </div>
+                            <!-- message content -->
+                            <div class="text-content">
+                                <p>@Model.Text</p>
+                            </div>
+                            <hr />
+                            <br />
+
+                        </div>
+
+                    </div>
+                    <br />
+
+                    <!----------------------------- Display the response ----------------------------->
+
+                    <div>
+                        <h4>Response</h4>
+                    </div>
+                    <div class="content-holder">
+
+                        <div class="content-container">
+
+                            <!-- check if there is any response to current feedback -->
+                            @if (ViewBag.currentResponse.Count == 0)
+                            {
+                                <!-- display message for no response -->
+                                <div class="content-container">
+                                    <h6>No responses</h6>
+                                </div>
+                            }
+                            else
+                            {
+                                <!-- Display response -->
+                                @foreach (var response in ViewBag.currentResponse)
+                                {
+                                    @if (response.MemberID != null)
+                                    {
+
+                                        <!-- user & date time -->
+                                        <div class="title-date-content">
+                                            <h6>You</h6>
+                                            <span>@response.DateTimePosted.ToString("dd/MM/yyyy")</span>
+                                        </div>
+                                        <!-- message content -->
+                                        <div class="text-content">
+                                            <p>@response.Text</p>
+                                        </div>
+                                        <hr />
+                                        <br />
+                                    }
+                                    else
+                                    {
+                                        <!-- user & date time -->
+                                        <div class="title-date-content">
+                                            <h6>@response.StaffID Manager</h6>
+                                            <span>@response.DateTimePosted.ToString("dd/MM/yyyy")</span>
+                                        </div>
+                                        <!-- message content -->
+                                        <div class="text-content">
+                                            <p>@response.Text</p>
+                                        </div>
+                                        <hr />
+                                        <br />
+                                    }
+                                }
+                            }
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>

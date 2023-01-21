@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Redeem Voucher";
+	ViewData["css"] = "salespersonnel/redeemvoucher.css";
+}
+
+<section class="body">
+	<section class="header container-fluid">@ViewData["Title"]</section>
+	<section class="content container">
+		<form asp-action="VoucherRedemption">
+			<label for="voucherSN">Voucher Serial No.</label>
+			<input type="text" class="form-control" id="voucherSN" name="voucherSN" placeholder="Enter serial number" required>
+			<button type="submit" class="btn btn-danger">Submit</button>
+			<span id="FailureText" class="serialno-failuretext" style="color:Red;">
+				@if (TempData["VoucherErr"] != null) { @TempData["VoucherErr"] }
+			</span>
+			<span id="SuccessText" class="serialno-fsuccesstext" style="color:Green;">
+				@if (TempData["VoucherSuc"] != null) { @TempData["VoucherSuc"] }
+			</span>
+		</form>
+	</section>
+</section>

@@ -1,0 +1,17 @@
+﻿.body {
+	height: 92vh;
+	width: 100vw;
+}
+
+.content {
+	margin-top:25vh
+}
+
+.content input{
+	margin-bottom:1rem;
+}
+
+	.content form .btn {
+
+		float: right;
+	}

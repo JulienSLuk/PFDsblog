@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    ViewData["css"] = "home/login.css";
+}
+
+<section class="body">
+    <section class="loginWrapper container">
+    <h2>Login</h2>
+
+	<form method="post" action="~/Home/UserLogin">
+		<div class="btn-group btn-group-toggle choicebtn" data-toggle="buttons">
+			<label class="btn btn-red active">
+				<input type="radio" name="user" value="Member" autocomplete="off" checked> Member
+			</label>
+			<label class="btn btn-red">
+				<input type="radio" name="user" value="Staff" id="staff" autocomplete="off"> Staff
+			</label>
+		</div>
+		<input id="txtLoginid" name="txtLoginid" class="form-control" placeholder="Login ID" required>
+
+		<input type="password" id="txtPassword" name="txtPassword" class="form-control" placeholder="Password" required>
+
+		<input type="submit" id="btnLogin" value="Login" class="btn btn-primary" />
+	</form>
+
+    <div style="font-size: 1em; height: 40px; line-height: 40px;"></div>
+    <span id="FailureText" class="login-failuretext" style="color:Red;">
+		@if (TempData["ErrorMessage"] != null)
+		{
+			@TempData["ErrorMessage"]
+		}
+	</span>
+    <div id="Line" class="separator-line">
+        <span><hr></span>
+    </div>
+    </section>
+</section>
+
+

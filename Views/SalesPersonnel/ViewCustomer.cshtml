@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WEB2022_ZZFashion.Models.SPCustomerViewModel>
+@{
+    ViewData["Title"] = "View Customer";
+	ViewData["css"] = "salespersonnel/viewcustomer.css";
+}
+
+
+<section class="body">
+	<section class="header container-fluid">View Customer</section>
+	<section class="content container">
+		<div class="search-container">
+			<form asp-action="ViewCustomer" method="post">
+				<input type="text" placeholder="Search.." name="search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
+
+		<partial name="~/Views/SalesPersonnel/_ViewCustomer.cshtml" model="@Model" />
+
+	</section>
+</section>

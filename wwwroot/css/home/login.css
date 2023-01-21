@@ -1,0 +1,58 @@
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 92vh;
+    width: 100vw;
+    background-color: rgb(250, 250, 250);
+}
+
+.loginWrapper{
+    display: block;
+    width: 400px;
+    background-color: #FFF;
+    padding: 10px 20px 40px 20px;
+    margin: 20px auto;
+    border: solid 1px #cccccc;
+    box-shadow: 5px 5px 5px#cccccc;
+    opacity: 0.9475437;
+    margin-top: -10vh;
+}
+
+.choicebtn{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.choicebtn .btn-group{
+    width: 100%;
+    background-color: #fff;
+    min-height: 32px;
+    color: #565a5c;
+    resize: none;
+    outline: none;
+    padding: 2px 5px 1px;
+}
+
+.loginWrapper input{
+    margin-bottom: 1rem;
+}
+
+.btn-red{
+    border-color: #707070;
+}
+
+.btn-red:not(:disabled):not(.disabled):active, .btn-red:not(:disabled):not(.disabled).active,
+.show > .btn-red.dropdown-toggle {
+  color: #fff;
+  background-color: #AC2525;
+}
+
+#btnLogin {
+    float: right;
+}
+
+
+

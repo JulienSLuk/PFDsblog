@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WEB2022_ZZFashion.Models.Feedback>
+
+@if (Model.ToList().Count > 0)
+{
+    @foreach (var item in Model)
+    {
+        <div class="feedback-container shadow p-1 mb-5 bg-white rounded 25rem">
+            <div class="feedback-inner-container">
+                <div class="feedback-header">
+                    <h4>Feedback</h4>
+
+                    <span>@item.DateTimePosted.ToString("dd/MM/yyyy")</span>
+                </div>
+                    <div class="content-holder">
+                        <h4 style="font-weight: bold; margin: auto; text-align: center">MemberID: @item.MemberID</h4>
+                    </div>
+                    <div class="content-holder">
+                        <h4 style="text-decoration:underline">Title: @item.Title</h4>
+                    </div>
+                    <div class="content-holder">
+                        <span style="font-size:15px;">@item.Text</span>
+                    </div>
+                    <div class="content-holder">
+                        <a class="button-reply" asp-action="Details" asp-controller="Feedback"
+                           asp-route-id="@item.FeedbackID">Reply</a>
+
+                    </div>
+            </div>
+
+        </div>
+    }
+
+}
+else
+{
+    <span style="color:red">No record found!</span>
+}
+

@@ -1,0 +1,62 @@
+﻿@model WEB2022_ZZFashion.Models.Response
+
+@{
+    ViewData["css"] = "marketingmanager/response.css";
+}
+
+<form asp-action="Edit">
+    <h4 class="PageTitle">Edit Response</h4>
+    <fieldset class="FormContent">
+        <div class="form-group row">
+            <label asp-for="ResponseID" hidden
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="ResponseID" hidden
+                       class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="FeedbackID" hidden
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="FeedbackID" hidden
+                       class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="StaffID"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="StaffID" readonly
+                       class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DateTimePosted"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="DateTimePosted" readonly
+                       class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Text"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Html.TextAreaFor(m => m.Text, new { placeholder = "Type your response here", @class = "form-control" })
+                <span asp-validation-for="Text"
+                      class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+                <input type="submit" value="Save"
+                       class="button-save" />
+            </div>
+        </div>
+        <div>
+            <a style="color: darkred; font-weight: bold" asp-action="Details" asp-controller="Feedback"
+               asp-route-id="@Model.FeedbackID">Back to Feedback</a>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+	ViewData["css"] = "salespersonnel/index.css";
+}
+
+<section class="body">
+	<div class="container">
+		<div class="row">
+			<a class="item col-lg-4 center" id="createcustomer" href="~/SalesPersonnel/CreateCustomer">
+				<h3>Create Customer</h3>
+				<img src="/images/adduser.png" alt="Create customer">
+			</a>
+			<a class="item col-lg-7" id="viewcustomer" href="~/SalesPersonnel/ViewCustomer">
+				<h3>View Customer</h3>
+				<p>Search for customer and view pending voucher  (pass physical voucher)</p>
+			</a>
+		</div>
+		<div class="row">
+			<a class="item col-lg-6" id="redeemcashvoucher" href="~/SalesPersonnel/RedeemVoucher">
+				<h3>Redeem Cash Voucher</h3>
+				<p>Collect and redeem Customer physical voucher</p>
+			</a>
+			<a class="item col-lg-5 center" id="logout" href="~/Logout">
+				<h3>Logout</h3>
+				<img src="/images/logout.png" alt="Logout">
+			</a>
+		</div>
+	</div>
+</section>
+
+

@@ -1,0 +1,46 @@
+﻿.body {
+    height: 92vh;
+    width: 100vw;
+    background-color: #EAEAEA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    margin-top: -8vh;
+}
+
+.item {
+    min-height: 10vh;
+    border-radius: 10px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: white;
+    margin: 0.75rem;
+    border: 1px solid rgba(86,61,124,.2);
+}
+
+.body a:hover {
+    text-decoration: none;
+    background-color: aliceblue;
+}
+
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#createcustomer img {
+    height: 10vh;
+    width: auto;
+    margin-left: 1rem;
+}
+
+#logout img {
+    height: 6vh;
+    width: auto;
+    margin-left: 2rem;
+}

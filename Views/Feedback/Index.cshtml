@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "View Customer";
+    ViewData["css"] = "marketingmanager/viewfeedback.css";
+    
+}
+
+
+<section class="body">
+    <section class="header container-fluid">
+        <p style="padding:2px 15px;">
+            @{
+                string userId = "Anonymous";
+                string userRole = "Unknown";
+                if (Context.Session.GetString("LoginID") != null)
+                {
+                    userId = Context.Session.GetString("LoginID");
+                }
+
+                if (Context.Session.GetString("Role") != null)
+                {
+                    userRole = Context.Session.GetString("Role");
+                }
+            }
+            <h2 style="font-weight: bold;">Welcome back, @TempData["sName"]</h2>
+            <h5 style="padding-left:20px; padding-top:3px;">(@userRole)</h5>
+    </section>
+    <section class="content container">
+        <h2 style="font-family:'Times New Roman', Times, serif;margin-top:35px;margin-bottom:15px;">RECENT FEEDBACKS</h2>
+        <partial name="~/Views/Feedback/_FeedBack.cshtml" model="@Model" />
+    </section>
+
+
+</section>
+
+

@@ -1,0 +1,89 @@
+﻿@model WEB2022_ZZFashion.Models.Customer
+
+@{
+	ViewData["Title"] = "Create Customer";
+	ViewData["css"] = "salespersonnel/createcustomer.css";
+}
+
+<section class="body">
+	<section class="header container-fluid">@ViewData["Title"]</section>
+	<section class="content container">
+		<form asp-action="CreateCustomer">
+			<fieldset class="FormContent">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label asp-for="Name" class="control-label"></label>
+							<input asp-for="Name" class="form-control" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label asp-for="Country" class="control-label"></label>
+							<select asp-for="Country" asp-items="@ViewData["CountryList"] as List<SelectListItem>" class="form-control"></select>
+							<span asp-validation-for="Country" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label asp-for="DOB" class="control-label"></label>
+							<input asp-for="DOB" class="form-control" />
+							<span asp-validation-for="DOB" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label asp-for="ResidentialAddr" class="control-label"></label>
+							<input asp-for="ResidentialAddr" class="form-control" />
+							<span asp-validation-for="ResidentialAddr" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label asp-for="ContactNo" class="control-label"></label>
+							<input asp-for="ContactNo" class="form-control" />
+							<span asp-validation-for="ContactNo" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label asp-for="Email" class="control-label"></label>
+							<input asp-for="Email" class="form-control" />
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label asp-for="Gender" class="control-label"></label>
+							<select asp-for="Gender" class="form-control">
+								<option value="">--Select--</option>
+								<option value="M">Male</option>
+								<option value="F">Female</option>
+							</select>
+							<span asp-validation-for="Gender" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group" id="btnsubmit">
+							<input type="submit" value="Create" class="btn btn-danger" />
+						</div>
+					</div>
+				</div>
+				<!--hidden input-->
+				<div class="form-group">
+					<input asp-for="Password" class="form-control" type="hidden" value="AbC@123#"/>
+					<input asp-for="MemberID" class="form-control" type="hidden" value="M00000000"/>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+</section>
+

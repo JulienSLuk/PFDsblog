@@ -1,0 +1,89 @@
+﻿.body {
+	height: 92vh;
+	width: 100vw;
+}
+
+.content {
+	margin-top: 10vh;
+}
+
+
+.search-container {
+	float: right;
+}
+
+input[type=text] {
+	height: 2rem;
+	padding: 6px;
+	margin-top: 0.5rem;
+	font-size: 14px;
+}
+
+.search-container button {
+	float: right;
+	padding: 6px 10px;
+	margin-top: 0.5rem;
+	margin-bottom: 2rem;
+	margin-right: 16px;
+	background: #ddd;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+	.search-container button:hover {
+		background: #ccc;
+	}
+
+
+
+
+
+thead {
+	background-color: #ac2525;
+}
+
+	thead th {
+		color: #fff;
+	}
+
+		thead th:last-child {
+			display: flex;
+			justify-content: center;
+		}
+
+tbody tr:hover {
+	background-color: aliceblue !important;
+}
+
+tbody td:first-child {
+	width: 30%;
+}
+
+tbody td:nth-child(2) {
+	width: 40%;
+}
+
+tbody td:nth-child(3) {
+	width: 20%;
+}
+
+tbody td {
+	overflow: hidden;
+}
+
+tbody td a{
+	display: block;
+	margin: -10em;
+	padding: 10em;
+}
+
+tbody td:last-child {
+	display: flex;
+	justify-content: center;
+	color: #ac2525 !important;
+}
+
+	tbody td:last-child:hover {
+		background-color: azure;
+	}

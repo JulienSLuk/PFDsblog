@@ -1,0 +1,37 @@
+﻿body {
+}
+
+.container{
+    margin-top:10px;
+}
+
+.content-header{
+    font-weight:bold;
+    font-size:1.2rem;
+}
+
+.holder-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+button{
+    text-decoration:none;
+    background-color:lightcoral;
+    color:white;
+    border:none;
+    padding:5px;
+    font-weight:bold;
+    border-radius:4px;
+}
+
+.edit-btn:hover{
+    background-color:darkred;
+}
+
+.cancel-icon{
+    font-size:1.5rem;
+    font-weight:bold;
+}
+

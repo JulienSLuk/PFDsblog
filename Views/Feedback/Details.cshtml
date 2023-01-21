@@ -1,0 +1,75 @@
+﻿@model WEB2022_ZZFashion.Models.FeedbackViewModel
+
+@{
+    ViewData["css"] = "marketingmanager/viewfeedback.css";
+
+}
+<section class="body">
+
+    <section class="content container" style="margin-top:100px;">
+        <div class="feedback-container shadow p-1 mb-5 bg-white rounded 25rem">
+            <div class="feedback-inner-container">
+                <div class="feedback-header">
+                    <h4>Feedback</h4>
+                    <span>@Model.DateTimePosted.ToString("dd/MM/yyyy")</span>
+                </div>
+                <div class="content-holder">
+                    <h4 style="font-weight: bold; margin: auto; text-align: center">MemberID: @Html.Display("MemberID")</h4>
+                </div>
+                <div class="content-holder">
+                    <h4 style="text-decoration:underline">Title: @Html.Display("Title")</h4>
+                </div>
+                <div class="content-holder">
+                    <span style="font-size:15px;margin-top:30px">@Html.Display("Text")</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="response-header">
+        <div style="font-size: 25px; font-weight: bold;"> Previous Responses</div>
+        <a style="color: darkred; font-weight: bold;margin-top:10px;"asp-action="Create" asp-controller="Response" asp-route-id="@Model.FeedbackID">+ Add Response</a>
+    </div>
+    
+    @if (Model.ResponseList.ToList().Count > 0)
+    {
+        @foreach (var item in Model.ResponseList)
+        {
+            <section class="content container" style="margin-top:20px;">
+                <div class="feedback-container shadow p-1 mb-5 bg-white rounded 25rem">
+                    <div class="feedback-inner-container">
+                        <div class="feedback-header">
+                            <h4>Response</h4>
+                            <span>@item.DateTimePosted.ToString("dd/MM/yyyy")</span>
+                        </div>
+                        <div class="content-holder">
+                            <h4 style="font-weight: bold; margin: auto; text-align: center">StaffID: @item.StaffID</h4>
+                        </div>
+                        <div class="content-holder">
+                            <span style="font-size:15px;margin-top:30px">@item.Text</span>
+                        </div>
+                        <div class="content-holder">
+                            <a class="button-edit" asp-action="Edit" asp-controller="Response"
+                               asp-route-id="@item.ResponseID">Edit</a>
+                            <a class="button-delete" asp-action="Delete" asp-controller="Response"
+                               asp-route-id="@item.ResponseID">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        }
+
+    }
+    else
+    {
+        <div style="text-align: center; font-size: 20px;margin-top:40px;"> No Responses Found!</div>
+    }
+<div style="text-align: center; margin-top: 20px;">
+    <a style="color: darkred; font-weight: bold" asp-action="Index"
+       asp-controller="MarketingManager">Back to List</a>
+</div>
+
+
+
+</section>

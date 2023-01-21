@@ -1,0 +1,78 @@
+
+.body {
+	display: flex;
+	background-image: url('../../images/home.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position-y: 8vh;
+	background-position-x: center;
+	min-height: 92vh;
+	align-items: center;
+}
+
+.boxy1{
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-sizing: content-box;
+  padding: 2vw;
+  margin-left: 8vw;
+  margin-top: -15vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxy2{
+  background-color: rgb(255, 255, 255, 0.7);
+  box-sizing: content-box;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+
+.boxy2 h3 {
+  font-family: rift-soft,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 3vw;
+}
+
+.forpadding{
+  width: 25vw;
+}
+
+.boxy2 h2 {
+  font-family: rift-soft,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 5vw;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxy3 {
+  background-color: rgb(255, 255, 255, 1);
+  border-style: solid;
+  border-color: #707070;
+  border-width: 1px;
+  box-sizing: content-box;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.boxy3 a {
+  font-family: rift-soft,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size:1.5vw;
+  color: #AC2525;
+  text-decoration: none;
+}
+
+
+

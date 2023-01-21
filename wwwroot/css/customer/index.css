@@ -1,0 +1,100 @@
+﻿body {
+}
+
+.container{
+    margin-top:10px;
+}
+
+button{
+    border:none;
+    text-decoration:none;
+    color:lightcoral;
+    background:none;
+    font-weight:bold;
+}
+
+/* birthday-msg css */
+.birthday-msg-container{
+    display:flex;
+    text-align:center;
+    align-content:center;
+    justify-content:space-evenly;
+    background-color:lightcoral;
+}
+.birthday-msg{
+    margin-top:10px;
+    margin-bottom:10px;
+    font-size:1.5rem;
+    color:darkred;
+}
+.birthday-msg a{
+    font-size:1.5rem;
+}
+
+/* feedback css */
+
+.feedback-inner-container{
+    margin:1.5rem;
+}
+
+.feedback-header{
+    display:flex;
+    justify-content:space-between;
+}
+
+/* content css */
+.content-holder{
+    margin-top:5px;
+    border: 1px solid #ccc;
+}
+.content-container{
+    text-align:center;
+    margin:1rem;
+}
+.content-container-nh{
+    text-align:center;
+    margin:1rem;
+}
+.content-container:hover{
+    background-color:rgb(0 0 0 / 0.15);
+    cursor:pointer;
+}
+
+.give-feedback-btn{
+    background-color:lightcoral;
+    color:white;
+    padding:1rem;
+    border-radius:5px;
+}
+.give-feedback-btn:hover{
+    background-color:darkred;
+}
+.feedback-btn:hover{
+    color:darkred;
+}
+
+.title-date-content{
+    display:flex;
+    justify-content:space-between;
+}
+.text-content{
+    text-align:start;
+}
+
+/* Give feedback modal css */
+.cancel-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.text-area-container{
+    text-align:center;
+}
+
+.custom-file-input{
+    text-align:start;
+}
+
+.custom-file-input:hover{
+    cursor:pointer;
+}

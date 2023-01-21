@@ -1,0 +1,330 @@
+﻿@model WEB2022_ZZFashion.Models.Customer
+
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["css"] = "customer/profile.css";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Profile Page</h2>
+            <br />
+            <!-------------------------------------------- image holder -------------------------------------------->
+            <div class="text-center">
+                <i class="fas fa-user-circle fa-9x text-secondary"></i>
+                <h3>@TempData["UserName"]</h3>
+                <br />
+            </div>
+            <hr />
+
+            <!--------------------------------------------- Change password holder -------------------------------------------->
+            <div>
+                <div class="holder-container">
+                    <p class="content-header">Change Password:</p>
+                    <span><button class="edit-btn" data-toggle="modal" data-target="#pwModal">Change</button></span>
+                </div>
+            </div>
+
+            <!-- Display modal if there is an error -->
+            @if (TempData["oldPWError"] != null || TempData["cPWError"] != null || TempData["nPWError"] != null)
+            {
+                <!-- display popup modal -->
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#pwModal').modal('show');
+                    })
+                </script>
+            }
+
+            <!-- popup modal for password -->
+            <div class="modal fade" id="pwModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title">Change Password</h4>
+
+                            <button data-dismiss="modal" class="close">
+                                <span class="cancel-icon">&times;</span>
+                            </button>
+
+                        </div>
+                        <form method="post" asp-controller="Member" asp-action="EditPW">
+
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Current Password:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input id="currentPW" name="currentPW" class="form-control" type="password" />
+                                        <span class="text-danger"> @TempData["oldPWError"]</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">New Password:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input id="newPW" name="newPW" type="password" class="form-control" />
+                                        <span class="text-danger"> @TempData["nPWError"]</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Confirm New Password:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input id="cNewPW" name="cNewPW" class="form-control" type="password" />
+                                        <span class="text-danger">@TempData["cPWError"]</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="submit" id="btnLogin" value="Change Password" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+
+            <!-------------------------------------------- Email holder -------------------------------------------->
+            <div>
+                <div class="holder-container">
+                    <p class="content-header">Email:</p>
+                    <p>@TempData["UserEmail"]</p>
+                    <span><button class="edit-btn" data-toggle="modal" data-target="#emailModal">Edit</button></span>
+                </div>
+            </div>
+
+            <!-- Display modal if there is an error -->
+            @if (TempData["nEmailError"] != null || TempData["cEmailError"] != null)
+            {
+                <!-- display popup modal -->
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#emailModal').modal('show');
+                    })
+                </script>
+            }
+
+            <!-- popup modal for email -->
+            <div class="modal fade" id="emailModal">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title">Change Email</h4>
+
+                            <button data-dismiss="modal" class="close">
+                                <span class="cancel-icon">&times;</span>
+                            </button>
+
+                        </div>
+
+                        <form method="post" asp-controller="Member" asp-action="EditEmail">
+
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Current Email:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input value="@TempData["UserEmail"]" class="form-control-plaintext" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">New Email:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input asp-for="Email" id="newEmail" name="newEmail" class="form-control" />
+                                        <span class="text-danger"> @TempData["nEmailError"]</span>
+                                        <span class="text-danger" asp-validation-for="Email"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Confirm New Email:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input id="cNewEmail" name="cNewEmail" class="form-control" />
+                                        <span class="text-danger">@TempData["cEmailError"]</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="submit" id="btnLogin" value="Change Email" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <hr />
+
+            <!-------------------------------------------- Phone holder -------------------------------------------->
+            <div>
+                <div class="holder-container">
+                    <p class="content-header">Phone:</p>
+                    <p>@TempData["UserPhone"]</p>
+                    <span><button class="edit-btn" data-toggle="modal" data-target="#phoneModal">Edit</button></span>
+                </div>
+            </div>
+
+            <!-- Display modal if there is an error -->
+            @if (TempData["nPhoneError"] != null || TempData["cPhoneError"] != null)
+            {
+                <!-- display popup modal -->
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#phoneModal').modal('show');
+                    })
+                </script>
+            }
+
+            <!-- popup modal for email -->
+            <div class="modal fade" id="phoneModal">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title">Change Phone</h4>
+
+                            <button data-dismiss="modal" class="close">
+                                <span class="cancel-icon">&times;</span>
+                            </button>
+
+                        </div>
+
+                        <form method="post" asp-controller="Member" asp-action="EditContact">
+
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Current Phone No:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input value="@TempData["UserPhone"]" class="form-control-plaintext" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">New Phone No:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input asp-for="ContactNo" id="newPhone" name="newPhone" class="form-control" />
+                                        <span class="text-danger"> @TempData["nPhoneError"]</span>
+                                        <span class="text-danger" asp-validation-for="ContactNo"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Confirm New Phone No:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input id="cNewPhone" name="cNewPhone" class="form-control" />
+                                        <span class="text-danger">@TempData["cPhoneError"]</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="submit" id="btnLogin" value="Change Phone Number" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <hr />
+
+            <!-------------------------------------------- Address holder -------------------------------------------->
+            <div>
+                <div class="holder-container">
+                    <p class="content-header">Address:</p>
+                    <p>@TempData["UserAddr"]</p>
+                    <span><button class="edit-btn" data-toggle="modal" data-target="#addrModal">Edit</button></span>
+                </div>
+            </div>
+
+            <!-- Display modal if there is an error -->
+            @if (TempData["nAddrError"] != null || TempData["cAddrError"] != null)
+            {
+                <!-- display popup modal -->
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#addrModal').modal('show');
+                    })
+                </script>
+            }
+
+            <!-- popup modal for email -->
+            <div class="modal fade" id="addrModal">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title">Change Address</h4>
+
+                            <button data-dismiss="modal" class="close">
+                                <span class="cancel-icon">&times;</span>
+                            </button>
+
+                        </div>
+
+                        <form method="post" asp-controller="Member" asp-action="EditAddr">
+
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Current Address:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input value="@TempData["UserAddr"]" class="form-control-plaintext" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">New Address:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input asp-for="ResidentialAddr" id="newAddr" name="newAddr" class="form-control" />
+                                        <span class="text-danger"> @TempData["nAddrError"]</span>
+                                        <span class="text-danger" asp-validation-for="ResidentialAddr"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Confirm New Address:</label>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input id="cNewAddr" name="cNewAddr" class="form-control" />
+                                        <span class="text-danger">@TempData["cAddrError"]</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="submit" id="btnLogin" value="Change Address" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <hr />
+
+            <!-------------------------------------------- Birthday holder -------------------------------------------->
+            <div>
+                <div class="holder-container">
+                    <p class="content-header">Birthday:</p>
+                    <p style="margin-right:4rem;">@TempData["UserBD"]</p>
+                    <span></span>
+                </div>
+            </div>
+            <hr />
+        </div>
+
+    </body>
+</html>

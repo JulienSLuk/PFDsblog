@@ -1,0 +1,11 @@
+.content{
+    margin-top: 8vh;
+    min-height: 82vh;
+}
+
+p{
+    font-weight: 300;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 2.5rem;
+}

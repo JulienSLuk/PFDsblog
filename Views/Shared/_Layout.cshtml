@@ -1,0 +1,105 @@
+﻿
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <!-- fonts -->
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/wvd4ciu.css">
+
+    <!-- css -->
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/css/@ViewData["css"]">
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-replace-svg="nest"></script>
+
+    <link rel="icon" href="~/images/favicon.png">
+
+    <title>@ViewData["Title"]</title>
+</head>
+
+<body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="~/Home"><img src="~/images/favicon.png" alt="ZZ">Fashion</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            @{
+                string urlPath = Context.Request.Path;
+                string role = Context.Session.GetString("Role");
+
+                //Check for pages accessible without login so navbar can be the _HomeNav.cshtml
+                if (urlPath.Contains("Home") || urlPath == "/")
+                {
+                    if (role == "Member")
+                    {
+                        //To make navbar _MemberNav.cshtml when member is in Home controller
+                        @await Html.PartialAsync("Navbar/_MemberNav.cshtml");
+                    }
+                    else
+                    {
+                        @await Html.PartialAsync("Navbar/_HomeNav.cshtml");
+                    }
+                }
+                else if (role != null){
+                    //to give the respective navbar to its controllers
+                    switch (role)
+                    {
+                        case "Sales Personnel":
+                            @await Html.PartialAsync("Navbar/_SalesPersonnelNav.cshtml")
+                            break;
+                        case "Marketing Personnel":
+                            @await Html.PartialAsync("Navbar/_MarketingManagerNav.cshtml")
+                            break;
+                        case "Product Manager":
+                            @await Html.PartialAsync("Navbar/_ProductManagerNav.cshtml")
+                            break;
+                        case "Member":
+                            @await Html.PartialAsync("Navbar/_MemberNav.cshtml")
+                            break;
+                        default:
+                            @await Html.PartialAsync("Navbar/_HomeNav.cshtml")
+                            break;
+                    }
+                }
+                else{
+                    //not needed but just in case
+                    @await Html.PartialAsync("Navbar/_HomeNav.cshtml")
+                }
+            }
+        </div>
+      </nav>       
+    </header>
+
+    <div class="se-pre-con"></div>
+    
+    @RenderBody()
+
+    <footer>
+
+    </footer>
+
+	<script type="text/javascript" src="~/js/site.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+    @RenderSection("Scripts", required: false) 
+    
+</body>
+
+</html>

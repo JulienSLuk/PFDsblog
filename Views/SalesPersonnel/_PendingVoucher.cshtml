@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WEB2022_ZZFashion.Models.SPCashVoucherViewModel>
+
+@if (Model.ToList().Count > 0) {
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">Issuing ID</th>
+				<th scope="col">Month</th>
+				<th scope="col">Year</th>
+				<th scope="col">Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (var item in Model) {
+			<tr class="vitem" data-toggle="modal" data-target="#exampleModalCenter" data-issuingid="@item.IssuingID.ToString()" data-month="@item.Month.ToString()" data-year="@item.Year.ToString()" data-amount="@item.Amount.ToString()" data-memberid="@ViewData["MemberID"]">
+				<td>@item.IssuingID.ToString()</td>
+				<td>@item.Month.ToString()</td>
+				<td>@item.Year.ToString()</td>
+				<td>@item.Amount.ToString()</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+	@if (TempData["UpdatePendingErr"] != null)
+{
+	<script type="text/javascript">
+		window.onload = function (e) {alert("@TempData["UpdatePendingErr"]");}
+	</script>	
+}
+
+}
+else {
+	<span style="color:red">No record found!</span>
+}

@@ -1,0 +1,173 @@
+﻿@model WEB2022_ZZFashion.Models.Feedback
+
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["css"] = "customer/index.css";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </head>
+    <body>
+
+        <!-- To display birthday message if birthday falls in current month -->
+        @if (DateTime.Now.Month.ToString() == TempData["UserBD"])
+        {
+            <div class="birthday-msg-container">
+                <p class="birthday-msg">zzfashion wishes you a happy birthday! Enjoy an additional 15% off for each purchase made this month <a href="~/Home/Index">View products.</a></p>
+            </div>
+        }
+    <div class="container">
+        <h2>
+            Welcome back, @TempData["UserName"]
+        </h2>
+        <br />
+
+        <!-- container for feedbacks-->
+        <div class="feedback-container shadow p-1 mb-5 bg-white rounded">
+            <div class="feedback-inner-container">
+                <div class="feedback-header">
+                    <h4>Feedbacks</h4>
+
+                    <span><button class="feedback-btn" data-toggle="modal" data-target="#feedbackModal">+</button></span>
+
+                </div>
+                <div class="content-holder">
+                    @if (ViewBag.feedbacks.Count == 0)
+                    {
+                        <div class="content-container-nh">
+                            <h6>Give us a feedback to let us know!</h6>
+                            <button class="give-feedback-btn" data-toggle="modal" data-target="#feedbackModal">Give a feedback</button>
+                        </div>
+                    }
+                    else
+                    {
+                        @foreach (var feedback in ViewBag.feedbacks)
+                        {
+                            var noOfResponse = 0;
+
+                            @foreach (var response in ViewBag.responses)
+                            {
+                                @if (response.FeedbackID == feedback.FeedbackID)
+                                {
+                                    noOfResponse += 1;
+                                }
+                            }
+
+                            <div class="content-container" onclick="redirect(@feedback.FeedbackID)">
+                                <!-- title & date time -->
+                                <div class="title-date-content">
+                                    <h5>@feedback.Title</h5>
+                                    <span>@noOfResponse <i class="far fa-comment-alt pr-2"></i> @feedback.DateTimePosted.ToString("dd/MM/yyyy")</span>
+                                </div>
+                                <!-- message content -->
+                                <div class="text-content">
+                                    <p>@feedback.Text</p>
+                                </div>
+                                <hr />
+                            </div>
+                        }
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Display modal if there is an error -->
+        @if (TempData["titleError"] != null || TempData["textError"] != null)
+        {
+            <!-- display popup modal -->
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#feedbackModal').modal('show');
+                })
+            </script>
+        }
+        <!-------------------------------- popup modal -------------------------------->
+        <div class="modal fade" id="feedbackModal">
+            <div class="modal-dialog modal-dialog-centered">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Feedback</h4>
+
+                        <button data-dismiss="modal" class="close">
+                            <span class="cancel-icon">&times;</span>
+                        </button>
+
+                    </div>
+
+                    <form method="post" asp-controller="Member" asp-action="GiveFeedback">
+
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Title:</label>
+                                <div class="col-sm-10 col-md-10">
+                                    <input id="title" name="title" class="form-control" />
+                                    <span class="text-danger"> @TempData["titleError"]</span>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div class="text-area-container">
+                                
+                                <div class="custom-file">
+                                    <input type="file" id="file" name="file" class="custom-file-input" accept="image/*" />
+                                    <label class="custom-file-label" id="file-label" for="file">Add file</label>
+                                </div>
+                                
+                            </div>
+                            <br />
+
+                            <div class="text-area-container">
+
+                                <div class="text-area-content">
+                                    @Html.TextAreaFor(m => m.Text, new { placeholder = "Type your feedback here", @class = "form-control" })
+                                    <span class="text-danger"> @TempData["textError"]</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <input type="submit" value="Send" class="btn btn-success" />
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <!-------------------------------- End of popup modal -------------------------------->
+
+    </div>
+        
+    </body>
+</html>
+
+@section Scripts{ 
+    <!-- script to redirect user to feedback page -->
+    <script type="text/javascript">
+        function redirect(id) {
+            window.location.href = '/Member/Feedback/' + id;
+        }
+    </script>
+    
+    <!-- script for add file -->
+    <script type="text/javascript">
+        let fileInput = document.getElementById('file');
+        let fileLabel = document.getElementById('file-label');
+        fileInput.addEventListener('change', function (event) {
+            let uploadedFile = event.target.files[0].name;
+            fileLabel.textContent = uploadedFile;
+        })
+    </script>
+}
+

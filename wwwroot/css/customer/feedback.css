@@ -1,0 +1,30 @@
+﻿body {
+}
+
+.container {
+    margin-top: 10px;
+}
+
+/* content css */
+.content-holder {
+    margin-top: 5px;
+    border: 1px solid #ccc;
+}
+.inner-container {
+    margin: 1.5rem;
+}
+.content-container {
+    text-align: center;
+    margin: 1rem;
+}
+.title-date-content {
+    display: flex;
+    justify-content: space-between;
+}
+.text-content {
+    text-align: start;
+}
+
+.user{
+    text-align:start;
+}

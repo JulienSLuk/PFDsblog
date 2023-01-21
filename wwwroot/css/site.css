@@ -1,0 +1,125 @@
+﻿.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background: url('/images/loading.gif') center no-repeat #fff;
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('/fonts/icomoon.eot?y7wx8q');
+    src: url('/fonts/icomoon.eot?y7wx8q#iefix') format('embedded-opentype'), url('/fonts/icomoon.ttf?y7wx8q') format('truetype'), url('/fonts/icomoon.woff?y7wx8q') format('woff'), url('/fonts/icomoon.svg?y7wx8q#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-usericon:before {
+    content: "\e900";
+}
+
+
+* {
+    color: black;
+    line-height: 1;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 13px;
+}
+
+.navbar {
+    height: 8vh;
+}
+
+.navbar-brand {
+    font-family: rift-soft,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+}
+
+    .navbar-brand img {
+        height: 5vh;
+        padding-right: 1rem;
+    }
+
+.navbar-nav.navbar-center {
+    position: absolute;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.navbar-collapse ul.navbar-nav.ml-auto {
+    background-color: rgba(255,255,255,0.85) !important;
+}
+
+.nav-link {
+    padding: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+}
+
+nav ul span {
+    margin-right: 5vw;
+    font-size: 1.5rem;
+}
+
+    /*"highlights" when hovering navigation links*/
+    nav ul span:hover {
+        color: red;
+        text-decoration: none;
+    }
+
+    /*"highlights" when hovering navigation links*/
+    nav ul span:hover {
+        color: red;
+        text-decoration: none;
+    }
+
+.nav-item.active span {
+    color: red;
+}
+
+section.header {
+    display: flex;
+    height: 15vh;
+    background-color: #EAEAEA;
+    align-items: center;
+    font-size: 3vh;
+    font-weight: 500;
+}
