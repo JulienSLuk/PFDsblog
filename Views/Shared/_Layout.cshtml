@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SBlog</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap.min.js"></script>
+
+    </head>
+<body>
+    <header>
+        @if (Context.Session.GetString("Role") != null)
+        {
+            var controller = Context.Request.RouteValues["controller"].ToString();
+
+            if (controller == "Home" || controller == "Login" || controller == "ContactUs")
+            {
+                @await Html.PartialAsync("_Master.cshtml") }
+            else
+            {
+                if (Context.Session.GetString("Role") == "Customer")
+                {
+                    @await Html.PartialAsync("_CustomerMenu.cshtml") }
+                else if (Context.Session.GetString("Role") == "Sales Personnel")
+                {
+                    @await Html.PartialAsync("_SalesPersonnelMenu.cshtml") }
+                else if (Context.Session.GetString("Role") == "Marketing Manager")
+                {
+                    @await Html.PartialAsync("_MarketingManagerMenu") }
+                else if (Context.Session.GetString("Role") == "Product Manager")
+                {
+                    @await Html.PartialAsync("_ProductManagerMenu") }
+                }
+            }
+        else
+        {
+            @await Html.PartialAsync("_Master.cshtml")
+        }
+    </header>
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="master-footer">
+        <div>
+            &copy; 2022, SBlog Terms of Service
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/@@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+   
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
