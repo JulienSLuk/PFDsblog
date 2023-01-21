@@ -16,9 +16,9 @@ namespace WEB2022_ZZFashion.Models
         [StringLength(255,ErrorMessage ="File name exceeds 255 characters.")]
         public string? Image { get; set; }
         [DisplayFormat(DataFormatString = "{0:#,##0.00}")]
-        public double Price { get; set; }
-        [Display(Name = "Effective Date")]
-        public DateTime EffectiveDate { get; set; }
+        public string Desc { get; set; }
+        public string Cat { get; set; }
+        [StringLength(255, ErrorMessage = "File name exceeds 255 characters.")]
         [Display(Name = "Obsolete Status")]
         [RegularExpression(@"[0]|[1]$",ErrorMessage = "Invalid status, Status is identified using binary.")]
         public string ObsoleteStatus { get; set; }

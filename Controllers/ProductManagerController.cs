@@ -44,22 +44,15 @@ namespace WEB2022_ZZFashion.Controllers
                 ProductID = product.ID,
                 ProductTitle = product.Title,
                 ProductImage = product.Image,
-                ProductPrice = product.Price,
-                EffectiveDate = product.EffectiveDate,
+                ProductDesc = product.Desc,
+                ProductCat = product.Cat,
                 Obsolete = product.ObsoleteStatus,
                 ProductList = productList
             };
             return productVM;
 
         }
-        public ActionResult Create(int id)
-        {
-            Product product = new Product
-            {
-                EffectiveDate = DateTime.Today
-            };
-            return View(product);
-        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product)

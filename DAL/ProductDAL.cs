@@ -21,7 +21,7 @@ namespace WEB2022_ZZFashion.DAL
 			.AddJsonFile("appsettings.json");
 			Configuration = builder.Build();
 			string strConn = Configuration.GetConnectionString(
-			"ZZFashionConnectionString");
+			"SbloGConnectionString");
 			//Instantiate a SqlConnection object with the
 			//Connection String read.
 			conn = new SqlConnection(strConn);
@@ -41,8 +41,8 @@ namespace WEB2022_ZZFashion.DAL
 						ID = reader.GetInt32(0),
 						Title = reader.GetString(1),
 						Image = !reader.IsDBNull(2) ? reader.GetString(2) : (string?)null,
-						Price = (double)reader.GetDecimal(3),
-						EffectiveDate = reader.GetDateTime(4),
+						Desc = reader.GetString(3),
+						Cat = reader.GetString(4),
 						ObsoleteStatus = reader.GetString(5)
 					}
 					);
@@ -64,8 +64,8 @@ namespace WEB2022_ZZFashion.DAL
 					ID = reader.GetInt32(0),
 					Title = reader.GetString(1),
 					Image = reader.GetString(2),
-					Price = (double)reader.GetDecimal(3),
-					EffectiveDate = reader.GetDateTime(4),
+					Desc = reader.GetString(3),
+					Cat = reader.GetString(4),
 					ObsoleteStatus = reader.GetString(5)
 				}
 				);
@@ -88,8 +88,8 @@ namespace WEB2022_ZZFashion.DAL
 					product.ID = productID;
 					product.Title = reader.GetString(1);
 					product.Image = reader.GetString(2);
-					product.Price = (double)reader.GetDecimal(3);
-					product.EffectiveDate = reader.GetDateTime(4);
+					product.Desc = reader.GetString(3);
+					product.Cat = reader.GetString(4);
 					product.ObsoleteStatus = reader.GetString(5);
                 }
             }
@@ -113,8 +113,8 @@ namespace WEB2022_ZZFashion.DAL
 						ID = reader.GetInt32(0),
 						Title = reader.GetString(1),
 						Image = reader.GetString(2),
-						Price = (double)reader.GetDecimal(3),
-						EffectiveDate = reader.GetDateTime(4),
+						Desc = reader.GetString(3),
+						Cat = reader.GetString(4),
 						ObsoleteStatus = reader.GetString(5)
 					}
 				);
@@ -126,11 +126,11 @@ namespace WEB2022_ZZFashion.DAL
 		public int AddProduct(Product product)
         {
 			SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"INSERT INTO Product(ProductTitle,ProductImage,Price,EffectiveDate,Obsolete) OUTPUT INSERTED.ProductID VALUES(@productTitle,@productImage,@price,@effectiveDate,@obsolete)";
+            cmd.CommandText = @"INSERT INTO Product(ProductTitle,ProductImage,ProductDesc,ProductCat,Obsolete) OUTPUT INSERTED.ProductID VALUES(@productTitle,@productImage,@productDesc,@productCat,@obsolete)";
 
 			cmd.Parameters.AddWithValue("@productTitle", product.Title);
-			cmd.Parameters.AddWithValue("@price", product.Price);
-			cmd.Parameters.AddWithValue("@effectiveDate", product.EffectiveDate);
+			cmd.Parameters.AddWithValue("@productDesc", product.Desc);
+			cmd.Parameters.AddWithValue("@productCat", product.Cat);
 			cmd.Parameters.AddWithValue("@obsolete", product.ObsoleteStatus);
 			if(product.Image == null)
             {
@@ -144,8 +144,8 @@ namespace WEB2022_ZZFashion.DAL
         public int Update(Product product)
         {
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"UPDATE Product SET Price=@price,Obsolete=@obsolete WHERE ProductID = @selectedProductID";
-			cmd.Parameters.AddWithValue("@price",product.Price);
+            cmd.CommandText = @"UPDATE Product SET Desc=@desc,Obsolete=@obsolete WHERE ProductID = @selectedProductID";
+			cmd.Parameters.AddWithValue("@desc",product.Desc);
 			if(product.ObsoleteStatus == null)
             {
 				cmd.Parameters.AddWithValue("@obsolete", 1);

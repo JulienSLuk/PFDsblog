@@ -10,8 +10,8 @@ namespace WEB2022_ZZFashion.Models
         public int ProductID { get; set; }
         public string ProductTitle { get; set; }
         public string? ProductImage { get; set; }
-        public double ProductPrice { get; set; }
-        public DateTime EffectiveDate { get; set; }
+        public string ProductDesc { get; set; }
+        public string ProductCat { get; set; }
         public string Obsolete { get; set; }
         public List<Product> ProductList { get; set; }
     }

@@ -22,7 +22,7 @@ namespace WEB2022_ZZFashion.DAL
             .AddJsonFile("appsettings.json");
             Configuration = builder.Build();
             string strConn = Configuration.GetConnectionString(
-            "ZZFashionConnectionString");
+            "SbloGConnectionString");
             //Instantiate a SqlConnection object with the 
             //Connection String read. 
             conn = new SqlConnection(strConn);

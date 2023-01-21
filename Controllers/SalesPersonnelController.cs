@@ -10,7 +10,6 @@ namespace WEB2022_ZZFashion.Controllers
     public class SalesPersonnelController : Controller
     {
         private CustomerDAL customerContext = new CustomerDAL();
-        private CashVoucherDAL cashVoucherContext = new CashVoucherDAL();
 
 
 
@@ -75,82 +74,10 @@ namespace WEB2022_ZZFashion.Controllers
             }
         }
 
-        public ActionResult PendingVoucher(string id)
-        {
-            // Stop accessing the action if not logged in
-            // or account not in the "Staff" role
-            if ((HttpContext.Session.GetString("Role") == null) ||
-            (HttpContext.Session.GetString("Role") != "Sales Personnel"))
-            {
-                return RedirectToAction("Index", "Home");
-            }
+        
+        
 
-            ViewData["MemberID"] = id;
-            ViewData["MName"] = customerContext.findName(id);
-
-            List<SPCashVoucherViewModel> sPCashVouchers = cashVoucherContext.pVoucher(id);
-
-            return View(sPCashVouchers);
-        }
-
-        [HttpPost]
-        public ActionResult UpdateVoucher(int id, IFormCollection collection)
-        {
-            if (id != 0 && collection["voucherSN"].ToString().Trim() != "" && collection["voucherSN"].ToString().Trim().Length <= 20)
-            {
-                if (cashVoucherContext.checkSN(collection["voucherSN"]))
-                {
-                    cashVoucherContext.updatePendingVoucher(id, collection["voucherSN"].ToString().Trim());
-                }
-                else
-                {
-                    TempData["UpdatePendingErr"] = "This voucher serial number had been assigned before";
-                }
-            }
-            else
-            {
-                TempData["UpdatePendingErr"] = "Invalid input";
-            }
-            return RedirectToAction("PendingVoucher", new { id = collection["memberID"].ToString() });
-        }
-
-        public ActionResult RedeemVoucher()
-        {
-            // Stop accessing the action if not logged in
-            // or account not in the "Staff" role
-            if ((HttpContext.Session.GetString("Role") == null) ||
-            (HttpContext.Session.GetString("Role") != "Sales Personnel"))
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult VoucherRedemption(IFormCollection collection)
-        {
-            string voucherSN = collection["voucherSN"];
-            if (voucherSN != null)
-            {
-                voucherSN = voucherSN.Trim();
-                if (cashVoucherContext.checkStatus(voucherSN))
-                {
-                    cashVoucherContext.updateRedeemVoucher(voucherSN);
-                    TempData["VoucherSuc"] = "Success";
-                }
-                else
-                {
-                    TempData["VoucherErr"] = "This voucher cannot be used";
-                }
-            }
-            else
-            {
-                TempData["VoucherErr"] = "This voucher cannot be used";
-            }
-
-            return RedirectToAction("RedeemVoucher");
-        }
+        
 
         [HttpPost]
         public ActionResult ViewCustomer(string search)
