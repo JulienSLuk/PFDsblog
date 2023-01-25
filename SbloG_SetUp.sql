@@ -7,8 +7,8 @@
 /*  required for PFD Assignment.                        */
 /*======================================================*/
 
-Create Database SbloG
-GO
+--Create Database SbloG
+--GO
 
 Use SbloG
 GO
