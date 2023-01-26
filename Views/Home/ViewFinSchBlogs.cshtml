@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WEB2022_ZZFashion.Models.Product>
+@{
+    ViewData["Title"] = "ViewFinSchBlogs";
+}
+
+@if (Model.ToList().Count > 0)
+{
+    <div class="productMainContainer">
+        @foreach (var item in Model)
+        {
+            <div class="productContainer">
+                @{string imageFileName = item.Image;}
+                <img src="~/images/products/@imageFileName" alt="" class="productImage" />
+                <div class="productMainTextContainer">
+                    <ul class="productTextContainer">
+                        <li class="productTextHeader">@item.Title</li>
+                        <li class="productDescription">@item.Desc</li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <span style="color:red">No record found!</span>
+}

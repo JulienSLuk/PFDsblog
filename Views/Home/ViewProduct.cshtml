@@ -10,7 +10,12 @@
 <table class="table">
     <thead>
         <tr>
-
+            <a class="dropdown-item" asp-area="" asp-controller="ProductManager" asp-action="AllProducts">All Organisations</a>
+            <a class="dropdown-item" asp-area="" asp-controller="ProductManager" asp-action="ViewTechBlogs">Tech</a>
+            <a class="dropdown-item" asp-area="" asp-controller="ProductManager" asp-action="ViewFinSchBlogs">Financial Schemes</a>
+            <a class="dropdown-item" asp-area="" asp-controller="ProductManager" asp-action="AllProducts">Food Deals</a>
+        </tr>
+        <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ID)
             </th>

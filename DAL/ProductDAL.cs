@@ -50,6 +50,63 @@ namespace WEB2022_ZZFashion.DAL
 			reader.Close();
 			return productList;
 		}
+
+		public List<Product> GetTechProducts()
+		{
+
+			//sql command to select all products based on productid
+			SqlCommand cmd = conn.CreateCommand();
+			cmd.CommandText = @"SELECT * FROM Product WHERE ProductCat = 'Tech' ORDER BY ProductID";
+			conn.Open();
+			SqlDataReader reader = cmd.ExecuteReader();
+			List<Product> productList = new List<Product>();
+			while (reader.Read())
+			{
+				productList.Add(
+					new Product
+					{
+						ID = reader.GetInt32(0),
+						Title = reader.GetString(1),
+						Image = !reader.IsDBNull(2) ? reader.GetString(2) : (string?)null,
+						Desc = reader.GetString(3),
+						Cat = reader.GetString(4),
+						ObsoleteStatus = reader.GetString(5)
+					}
+					);
+			}
+			reader.Close();
+			return productList;
+
+		}
+
+		public List<Product> GetFinSchProducts()
+		{
+
+			//sql command to select all products based on productid
+			SqlCommand cmd = conn.CreateCommand();
+			cmd.CommandText = @"SELECT * FROM Product WHERE ProductCat = 'Financial Scheme' ORDER BY ProductID";
+			conn.Open();
+			SqlDataReader reader = cmd.ExecuteReader();
+			List<Product> productList = new List<Product>();
+			while (reader.Read())
+			{
+				productList.Add(
+					new Product
+					{
+						ID = reader.GetInt32(0),
+						Title = reader.GetString(1),
+						Image = !reader.IsDBNull(2) ? reader.GetString(2) : (string?)null,
+						Desc = reader.GetString(3),
+						Cat = reader.GetString(4),
+						ObsoleteStatus = reader.GetString(5)
+					}
+					);
+			}
+			reader.Close();
+			return productList; ;
+
+		}
+
 		public List<Product> GetNewProducts()
         {
 			SqlCommand cmd = conn.CreateCommand();
@@ -171,5 +228,7 @@ namespace WEB2022_ZZFashion.DAL
 			conn.Close();
 			return rowAffected;
         }
-    }
+
+		
+	}
 }

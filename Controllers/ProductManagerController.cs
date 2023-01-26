@@ -30,6 +30,22 @@ namespace WEB2022_ZZFashion.Controllers
             List<Product> productList = productContext.GetNewProducts();
             return View(productList);
         }
+
+        public ActionResult ViewTechBlogs()
+        {
+            //get products from product list to display on page
+            List<Product> productList = productContext.GetTechProducts();
+            return View(productList);
+        }
+
+
+        public ActionResult ViewFinSchBlogs()
+        {
+            //get products from product list to display on page
+            List<Product> productList = productContext.GetFinSchProducts();
+            return View(productList);
+        }
+
         public ActionResult Details(int productID)
         {
             Product product = productContext.GetDetails(productID);
@@ -118,6 +134,8 @@ namespace WEB2022_ZZFashion.Controllers
             productContext.Delete(product.ID);
             return RedirectToAction("AllProducts");   
         }
+
+        
 
     }
 }
