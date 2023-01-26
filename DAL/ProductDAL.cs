@@ -144,17 +144,10 @@ namespace WEB2022_ZZFashion.DAL
         public int Update(Product product)
         {
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"UPDATE Product SET Desc=@desc,Obsolete=@obsolete WHERE ProductID = @selectedProductID";
+            cmd.CommandText = @"UPDATE Product SET [Desc]=@desc,Obsolete=@obsolete WHERE ProductID = @selectedProductID";
 			cmd.Parameters.AddWithValue("@desc",product.Desc);
-			if(product.ObsoleteStatus == null)
-            {
-				cmd.Parameters.AddWithValue("@obsolete", 1);
-            }
-            else
-            {
-				cmd.Parameters.AddWithValue("@obsolete", product.ObsoleteStatus);
-            }
-			cmd.Parameters.AddWithValue("@selectedProductID", product.ID);
+			cmd.Parameters.AddWithValue("@obsolete", product.ObsoleteStatus);
+			cmd.Parameters.AddWithValue("@selectedProductID",product.ID);
 			conn.Open();
 			int count = (int)(cmd.ExecuteNonQuery());
 			conn.Close();

@@ -79,22 +79,19 @@ namespace WEB2022_ZZFashion.Controllers
         public ActionResult Edit(int id)
         {
             Product product = productContext.GetDetails(id);
-            product.ID = id;
             return View(product);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product)
         {
-            if (ModelState.IsValid)
-            {
-                productContext.Update(product);
-                return RedirectToAction("AllProducts");
-            }
-            else
+            
+            productContext.Update(product);
+            return RedirectToAction("AllProducts");
+           /* else
             {
                 return View(product);
-            }
+            } */
         }
         // GET
         public ActionResult Delete(int id)
