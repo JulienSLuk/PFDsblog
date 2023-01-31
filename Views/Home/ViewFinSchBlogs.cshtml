@@ -3,25 +3,66 @@
     ViewData["Title"] = "ViewFinSchBlogs";
 }
 
-@if (Model.ToList().Count > 0)
-{
-    <div class="productMainContainer">
+
+<h1>Hand Picked Blogs Just For You!</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="AllProducts">All Organisations</a>
+            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ViewTechBlogs">Tech</a>
+            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ViewFinSchBlogs">Financial Schemes</a>
+            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="AllProducts">Food Deals</a>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Desc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ObsoleteStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach (var item in Model)
         {
-            <div class="productContainer">
-                @{string imageFileName = item.Image;}
-                <img src="~/images/products/@imageFileName" alt="" class="productImage" />
-                <div class="productMainTextContainer">
-                    <ul class="productTextContainer">
-                        <li class="productTextHeader">@item.Title</li>
-                        <li class="productDescription">@item.Desc</li>
-                    </ul>
-                </div>
-            </div>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    <img src="~/images/Products/@item.Image" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ObsoleteStatus)
+                </td>
+
+            </tr>
         }
-    </div>
-}
-else
-{
-    <span style="color:red">No record found!</span>
-}
+    </tbody>
+</table>

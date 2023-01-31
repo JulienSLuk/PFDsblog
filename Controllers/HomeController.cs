@@ -49,6 +49,21 @@ namespace WEB2022_ZZFashion.Controllers
 			return View(productList);
         }
 
+		public ActionResult ViewTechBlogs()
+		{
+			//get products from product list to display on page
+			List<Product> productList = productContext.GetTechProducts();
+			return View(productList);
+		}
+
+
+		public ActionResult ViewFinSchBlogs()
+		{
+			//get products from product list to display on page
+			List<Product> productList = productContext.GetFinSchProducts();
+			return View(productList);
+		}
+
 		public IActionResult Login()
 		{
 			
