@@ -64,6 +64,13 @@ namespace WEB2022_ZZFashion.Controllers
 			return View(productList);
 		}
 
+		public ActionResult ViewFoodDealBlogs()
+		{
+			//get products from product list to display on page
+			List<Product> productList = productContext.GetFoodDealProducts();
+			return View(productList);
+		}
+
 		public IActionResult Login()
 		{
 			

@@ -166,9 +166,9 @@ SET IDENTITY_INSERT [dbo].[Product] ON
 INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (1, 'MOE Financial Assistance Schemes', 'MOE_FAS.png', 'Financial assistance from MOE on school fees and other expenses, such as meals, textbooks, school attire and transportation. ', 'Financial Scheme', '1')
 INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (2, 'SGBono (Laptop loan and tech support)', 'sgBonoPage.png', 'SGBono is a registered society with Registry Of Societies, Singapore since 21st Nov 2018. Made up of a group of volunteers in Singapore from various backgrounds, they provide free services for low-income families to solve their IT issues. ', 'Tech', '1')
 INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (3, 'Tech Composition Singaporean school guide', 'techcomposition.png', 'This website provides useful information for students that might require a laptop for school.', 'Tech', '1')
-INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (4, 'Wishing Well', 'wishingwell.png', 'The WishingWell is an organisation focused on supporting the current and future needs of disadvantaged children. ', 'Financial Scheme', '0')
+INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (4, 'Wishing Well', 'wishingwell.png', 'The WishingWell is an organisation focused on supporting the current and future needs of disadvantaged children. ', 'Financial Scheme', '1')
 INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (5, 'IMDA Financial Assistance Schemes ', 'IMDA_FAS.png', 'Government financial assistance scheme for students who are from low SES families and those whose households have disabled persons.', 'Financial Scheme', '0')
-INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (6, 'Seedly blog', 'SeedlyNeverGoHungry.png', 'Seedly is an online blog, where people can come together can discuss about anything they want. ', 'Financial Scheme', '1')
+INSERT [dbo].[Product] ([ProductID], [ProductTitle], [ProductImage], [ProductDesc], [ProductCat], [Obsolete]) VALUES (6, 'Seedly blog', 'SeedlyNeverGoHungry.png', 'Seedly is an online blog, where people can come together can discuss about anything they want. ', 'Food', '1')
 SET IDENTITY_INSERT [dbo].[Product] OFF
 
 
@@ -193,3 +193,5 @@ VALUES (3, 2, 'M00000002', NULL, '16-May-2022', 'I had returned the flawed produ
 SET IDENTITY_INSERT [dbo].[Response] OFF
 
 
+
+SELECT * FROM Product
