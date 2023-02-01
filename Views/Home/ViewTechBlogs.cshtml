@@ -16,15 +16,14 @@
             <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ViewFoodDealBlogs">Food Deals</a>
         </tr>
         <tr>
+            
             <th>
-                @Html.DisplayNameFor(model => model.ID)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
+
 
             <th>
                 @Html.DisplayNameFor(model => model.Desc)
@@ -32,9 +31,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Cat)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ObsoleteStatus)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -43,14 +40,12 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    <img src="~/images/Products/@item.Image" />
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
+                <td>
+                    <img class="blogimg" src="~/images/Products/@item.Image" />
+                </td>
+                
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Desc)
@@ -58,9 +53,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Cat)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ObsoleteStatus)
-                </td>
+                
 
             </tr>
         }

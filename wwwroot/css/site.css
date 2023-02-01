@@ -123,3 +123,11 @@ section.header {
     font-size: 3vh;
     font-weight: 500;
 }
+.blogimg{
+    width: 200px;
+    height: 120px;
+}
+.aboutusfont{
+    font-size:20px;
+    line-height:20px;
+}

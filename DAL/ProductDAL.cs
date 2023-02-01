@@ -138,7 +138,8 @@ namespace WEB2022_ZZFashion.DAL
 		public List<Product> GetNewProducts()
         {
 			SqlCommand cmd = conn.CreateCommand();
-			cmd.CommandText = @"SELECT * From Product WHERE Obsolete = 1";
+			cmd.CommandText = @"SELECT * From Product";
+			//cmd.CommandText = @"SELECT * From Product WHERE Obsolete = 1";
 			conn.Open();
 			SqlDataReader reader = cmd.ExecuteReader();
 			List<Product> productList = new List<Product>();
