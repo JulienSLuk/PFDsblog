@@ -174,7 +174,7 @@ namespace WEB2022_ZZFashion.Controllers
 			}
 		}
 
-		public ActionResult CustomerApplication()
+		public IActionResult CustomerApplication()
         {
 			return View();
         }
