@@ -41,7 +41,16 @@ namespace WEB2022_ZZFashion.Controllers
 
             return ViewCustomer("");
         }
-
+        public ActionResult PendingRequests()
+        {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+            (HttpContext.Session.GetString("Role") != "Sales Personnel"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            List<TempCustomer> userList = customerContext.GetAllRequests();
+            return View(userList);
+        }
         public ActionResult CreateCustomer()
         {
             // Stop accessing the action if not logged in
@@ -71,7 +80,7 @@ namespace WEB2022_ZZFashion.Controllers
                 //Input validation fails, return to the Create view
                 //to display error message
                 return View(customer);
-            }
+            } 
         }
 
         

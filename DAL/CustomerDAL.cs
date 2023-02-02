@@ -536,7 +536,35 @@ namespace WEB2022_ZZFashion.DAL
             //Return id when no error occurs.
             return customer.MemberID;
 		}
+		public List<TempCustomer> GetAllRequests()
+		{
+			SqlCommand cmd = conn.CreateCommand();
+			cmd.CommandText = @"SELECT * From TempCustomer";
+			conn.Open();
+			SqlDataReader reader = cmd.ExecuteReader();
+			List<TempCustomer> tempList = new List<TempCustomer>();
+			while (reader.Read())
+			{
+				tempList.Add(
+					new TempCustomer
+					{
+						MemberID = reader.GetInt32(0), //0: 1st column
+						Name = reader.GetString(1), //1: 2nd column
+													//Get the first character of a string
+						Gender = reader.GetString(2)[0], //2: 3rd column
+						DOB = reader.GetDateTime(3), //3: 4th column
+						ResidentialAddr = !reader.IsDBNull(4) ? reader.GetString(4) : (string?)null, //5: 6th column
+						Country = reader.GetString(5), //6: 7th column
+						ContactNo = !reader.IsDBNull(6) ? reader.GetString(6) : (string?)null, //7: 8th column
+						Email = !reader.IsDBNull(7) ? reader.GetString(7) : (string?)null, //8: 9th column
+						Password = !reader.IsDBNull(8) ? reader.GetString(8) : (string?)null,
 
+					}
+					);
+			}
+			reader.Close();
+			return tempList;
+		}
 
 
 	}
