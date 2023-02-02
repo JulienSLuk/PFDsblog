@@ -484,6 +484,7 @@ namespace WEB2022_ZZFashion.DAL
 			SqlCommand cmd = conn.CreateCommand();
 
 			cmd.CommandText = @"INSERT INTO TempCustomer (TName, TGender, TBirthDate, TAddress, TCountry, TTelNo, TEmailAddr,TPassword)
+							OUTPUT INSERTED.TempID
 							VALUES(@name, @gender, @dob, @residentialaddr, @country, @contactno, @email,@password)";
 
 

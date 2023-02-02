@@ -47,7 +47,7 @@ namespace WEB2022_ZZFashion.Models
 		[Display(Name = "Contact Number")]
 		[StringLength(50, ErrorMessage =
 		"Contact number cannot exceed 20 characters")]
-		[ValidateContactExists]
+		
 		public string ContactNo { get; set; }
 
 
@@ -55,7 +55,7 @@ namespace WEB2022_ZZFashion.Models
 		[StringLength(50, ErrorMessage =
 		"Name cannot exceed 50 characters")]
 		[EmailAddress(ErrorMessage = "Invalid Email Address")]
-		[ValidateEmailExists]
+		
 		public string? Email { get; set; }
 
 
