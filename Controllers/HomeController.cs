@@ -43,6 +43,16 @@ namespace WEB2022_ZZFashion.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult Forum()
+		{
+			return View();
+		}
+
+		public IActionResult Donate()
+		{
+			return View();
+		}
 		public ActionResult ViewProduct()
         {
 			List<Product> productList = productContext.GetNewProducts();
