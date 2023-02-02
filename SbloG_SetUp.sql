@@ -43,6 +43,11 @@ if exists (select * from sysobjects
   drop table dbo.Customer
 GO
 
+if exists (select * from sysobjects
+	where id = object_id('dbo.TempCustomer') and sysstat & 0xf = 3)
+	drop table dbo.TempCustomer
+GO
+
 /* Table: dbo.Staff */
 if exists (select * from sysobjects 
   where id = object_id('dbo.Staff') and sysstat & 0xf = 3)
@@ -84,6 +89,22 @@ CREATE TABLE dbo.Customer
   MEmailAddr		varchar(50)		NULL,
   MPassword			varchar(20)		NOT NULL	DEFAULT ('AbC@123#'),
   CONSTRAINT PK_Customer PRIMARY KEY CLUSTERED (MemberID)
+)
+GO
+
+/* Table: dbo.TempCustomer */
+CREATE TABLE dbo.TempCustomer
+(
+  TempID 			int IDENTITY (1,1),
+  TName				varchar(50) 	NOT NULL,
+  TGender			char(1) 		NOT NULL	CHECK (TGender IN ('M','F')),
+  TBirthDate		datetime		NOT NULL,
+  TAddress			varchar(250)	NULL,
+  TCountry			varchar(50)		NOT NULL,
+  TTelNo			varchar(20)		NULL,
+  TEmailAddr		varchar(50)		NULL,
+  TPassword			varchar(20)		NOT NULL	DEFAULT ('AbC@123#'),
+  CONSTRAINT PK_TempCustomer PRIMARY KEY CLUSTERED (TempID)
 )
 GO
 

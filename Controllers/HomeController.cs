@@ -157,6 +157,43 @@ namespace WEB2022_ZZFashion.Controllers
 			}
 		}
 
+		public ActionResult CustomerApplication()
+        {
+			return View();
+        }
+
+		[HttpPost]
+		public ActionResult CustomerApplication(IFormCollection formData)
+        {
+            if (ModelState.IsValid)
+            {
+				
+            }
+        }
+
+		public ActionResult Create(int id)
+		{
+			Product product = new Product
+			{
+
+			};
+			return View(product);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Create(Product product)
+		{
+			if (ModelState.IsValid)
+			{
+				product.ID = productContext.AddProduct(product);
+				return RedirectToAction("AllProducts");
+			}
+			else
+			{
+				return View(product);
+			}
+		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

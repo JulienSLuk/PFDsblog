@@ -472,5 +472,66 @@ namespace WEB2022_ZZFashion.DAL
 			//Close the database connection
 			conn.Close();
 		}
+
+
+
+
+
+		public string AddTemp(TempCustomer customer)
+		{
+
+			//Create a SqlCommand object from connection object
+			SqlCommand cmd = conn.CreateCommand();
+
+			cmd.CommandText = @"INSERT INTO TempCustomer (MemberID, TName, TGender, TBirthDate, TAddress, TCountry, TTelNo, TEmailAddr)
+							VALUES(@memberid, @name, @gender, @dob, @residentialaddr, @country, @contactno, @email)";
+
+
+			// customer.MemberID = getNewMemberID();
+
+
+			//Define the parameters used in SQL statement, value for each parameter
+			//is retrieved from respective class's property.
+			cmd.Parameters.AddWithValue("@memberid", customer.MemberID);
+			cmd.Parameters.AddWithValue("@name", customer.Name);
+			cmd.Parameters.AddWithValue("@gender", customer.Gender);
+			cmd.Parameters.AddWithValue("@dob", customer.DOB);
+			if (customer.ResidentialAddr == null)
+			{
+				cmd.Parameters.AddWithValue("@residentialaddr", DBNull.Value);
+			}
+			else
+			{
+				cmd.Parameters.AddWithValue("@residentialaddr", customer.ResidentialAddr);
+			}
+			cmd.Parameters.AddWithValue("@country", customer.Country);
+			if (customer.ContactNo == null)
+			{
+				cmd.Parameters.AddWithValue("@contactno", DBNull.Value);
+			}
+			else
+			{
+				cmd.Parameters.AddWithValue("@contactno", customer.ContactNo);
+			}
+			if (customer.Email == null)
+			{
+				cmd.Parameters.AddWithValue("@email", DBNull.Value);
+			}
+			else
+			{
+				cmd.Parameters.AddWithValue("@email", customer.Email);
+			}
+
+			//A connection to database must be opened before any operations made.
+			conn.Open();
+			customer.MemberID = (int)cmd.ExecuteScalar();
+			//A connection should be closed after operations.
+			conn.Close();
+			//Return id when no error occurs.
+			return customer.MemberID;
+		}
+
+
+
 	}
 }
