@@ -186,7 +186,7 @@ namespace WEB2022_ZZFashion.Controllers
 			if (ModelState.IsValid)
 			{
 				tempcustomer.MemberID = memberContext.AddTemp(tempcustomer);
-				return RedirectToAction("Login","Home");
+				return RedirectToAction("Login");
 			}
 			else
 			{
