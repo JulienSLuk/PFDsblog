@@ -180,37 +180,22 @@ namespace WEB2022_ZZFashion.Controllers
         }
 
 		[HttpPost]
-		public ActionResult CustomerApplication(IFormCollection formData)
-        {
-            if (ModelState.IsValid)
-            {
-				
-            }
-        }
-
-		public ActionResult Create(int id)
-		{
-			Product product = new Product
-			{
-
-			};
-			return View(product);
-		}
-
-		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(Product product)
-		{
+		public ActionResult CustomerApplication(TempCustomer tempcustomer)
+        {
 			if (ModelState.IsValid)
 			{
-				product.ID = productContext.AddProduct(product);
-				return RedirectToAction("AllProducts");
+				tempcustomer.MemberID = memberContext.AddTemp(tempcustomer);
+				return RedirectToAction("Login");
 			}
 			else
 			{
-				return View(product);
+				return View(tempcustomer);
 			}
+
 		}
+
+		
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

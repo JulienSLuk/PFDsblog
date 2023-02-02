@@ -104,7 +104,6 @@ CREATE TABLE dbo.TempCustomer
   TTelNo			varchar(20)		NULL,
   TEmailAddr		varchar(50)		NULL,
   TPassword			varchar(20)		NOT NULL	DEFAULT ('AbC@123#'),
-  CONSTRAINT PK_TempCustomer PRIMARY KEY CLUSTERED (TempID)
 )
 GO
 
@@ -181,6 +180,10 @@ INSERT [dbo].[Customer] ([MemberID], [MName], [MGender], [MBirthDate], [MAddress
 INSERT [dbo].[Customer] ([MemberID], [MName], [MGender], [MBirthDate], [MAddress], [MCountry], [MTelNo], [MEmailAddr], [MPassword]) VALUES ('M00000005', 'Eliza Wong', 'F', '24-Jul-1993', 'Blk 123, #10-321, Hougang Ave 2', 'Singapore', NULL, NULL, 'pass1234')
 INSERT [dbo].[Customer] ([MemberID], [MName], [MGender], [MBirthDate], [MAddress], [MCountry], [MTelNo], [MEmailAddr], [MPassword]) VALUES ('M00000006', 'K Kannan', 'M', '12-Sep-1990', NULL, 'India', NULL, '20100134@np.edu.sg', 'pass1234')
 
+/*****  Create records in TempCustomer Table *****/
+SET IDENTITY_INSERT [dbo].[TempCustomer] ON
+INSERT [dbo].[TempCustomer]([TempID], [TName], [TGender], [TBirthDate], [TAddress], [TCountry], [TTelNo], [TEmailAddr], [TPassword]) VALUES (1, 'Test', 'M', '05-May-1970', NULL, 'United Kingdom', NULL , NULL, 'pass1234')
+SET IDENTITY_INSERT [dbo].[TempCustomer] OFF
 
 /*****  Create records in Product Table *****/
 SET IDENTITY_INSERT [dbo].[Product] ON 
@@ -216,3 +219,4 @@ SET IDENTITY_INSERT [dbo].[Response] OFF
 
 
 SELECT * FROM Product
+SELECT * FROM TempCustomer

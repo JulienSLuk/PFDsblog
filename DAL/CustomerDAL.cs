@@ -477,14 +477,14 @@ namespace WEB2022_ZZFashion.DAL
 
 
 
-		public string AddTemp(TempCustomer customer)
+		public int AddTemp(TempCustomer customer)
 		{
 
 			//Create a SqlCommand object from connection object
 			SqlCommand cmd = conn.CreateCommand();
 
-			cmd.CommandText = @"INSERT INTO TempCustomer (MemberID, TName, TGender, TBirthDate, TAddress, TCountry, TTelNo, TEmailAddr)
-							VALUES(@memberid, @name, @gender, @dob, @residentialaddr, @country, @contactno, @email)";
+			cmd.CommandText = @"INSERT INTO TempCustomer (TName, TGender, TBirthDate, TAddress, TCountry, TTelNo, TEmailAddr,TPassword)
+							VALUES(@name, @gender, @dob, @residentialaddr, @country, @contactno, @email,@password)";
 
 
 			// customer.MemberID = getNewMemberID();
@@ -492,7 +492,6 @@ namespace WEB2022_ZZFashion.DAL
 
 			//Define the parameters used in SQL statement, value for each parameter
 			//is retrieved from respective class's property.
-			cmd.Parameters.AddWithValue("@memberid", customer.MemberID);
 			cmd.Parameters.AddWithValue("@name", customer.Name);
 			cmd.Parameters.AddWithValue("@gender", customer.Gender);
 			cmd.Parameters.AddWithValue("@dob", customer.DOB);
@@ -521,14 +520,21 @@ namespace WEB2022_ZZFashion.DAL
 			{
 				cmd.Parameters.AddWithValue("@email", customer.Email);
 			}
-
+			if (customer.Password == null)
+            {
+				cmd.Parameters.AddWithValue("@password", DBNull.Value);
+            }
+            else
+            {
+				cmd.Parameters.AddWithValue("@password", customer.Password);
+            }
 			//A connection to database must be opened before any operations made.
 			conn.Open();
 			customer.MemberID = (int)cmd.ExecuteScalar();
 			//A connection should be closed after operations.
 			conn.Close();
-			//Return id when no error occurs.
-			return customer.MemberID;
+            //Return id when no error occurs.
+            return customer.MemberID;
 		}
 
 
