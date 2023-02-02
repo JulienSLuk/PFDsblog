@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Donate";
+}
+
+
+
+<style>
+    /* globals */
+    body {
+        font-family: "Raleway", sans-serif;
+        padding: 0;
+        margin: 0;
+        /* variables */
+        --mutedColor: #fafafa;
+        --lightColor: #e0dfdf;
+        --secondaryColor: #878787;
+        --primaryColor: #f15e33;
+        --smRadius: 3px;
+        --mdFontSize: 1.4rem;
+    }
+
+    button,
+    input {
+        border: none;
+        outline: none;
+    }
+
+    button {
+        cursor: pointer;
+        transition: box-shadow 0.4s;
+    }
+
+        button:hover {
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+    a {
+        text-decoration: none;
+        font-style: italic;
+        margin: 10px 0;
+    }
+
+    /* end of globals */
+
+    /* common styles */
+    .main-section,
+    .progress-bar,
+    .form input,
+    .card-footer button {
+        border: 1px solid var(--lightColor);
+    }
+
+    .container,
+    .form,
+    .card-footer {
+        display: flex;
+    }
+
+    /* end of common styles */
+
+    .container {
+        width: 100%;
+        justify-content: center;
+        padding: 20px 0;
+    }
+
+    .donate-card {
+        width: 20rem;
+    }
+
+        .donate-card .alert {
+            background-color: #424242;
+            text-align: center;
+            color: var(--mutedColor);
+            padding: 18px 25px;
+            border-radius: var(--smRadius);
+            position: relative;
+        }
+
+            /* creates the alert arrow */
+            .donate-card .alert::after {
+                content: "";
+                width: 0.5em;
+                height: 0.5em;
+                box-sizing: border-box;
+                position: absolute;
+                bottom: 0;
+                right: 1.5em;
+                border-color: #424242 transparent transparent transparent;
+                border-width: 0.5em;
+                border-style: solid;
+                transform: translateY(1em);
+            }
+
+        .donate-card .main-section {
+            margin: 15px auto;
+        }
+
+            .donate-card .main-section .progress-bar {
+                background-color: var(--mutedColor);
+                height: 14px;
+                position: relative;
+            }
+
+                .donate-card .main-section .progress-bar::before {
+                    content: "";
+                    height: 100%;
+                    width: 75%;
+                    background-color: var(--primaryColor);
+                    position: absolute;
+                    left: 0;
+                }
+
+    .highlight {
+        font-weight: bold;
+    }
+
+    .main-section .container {
+        flex-direction: column;
+        justify-content: start;
+        width: 90%;
+        margin: auto;
+        color: var(--secondaryColor);
+    }
+
+        .main-section .container .notice .highlight {
+            color: var(--primaryColor);
+        }
+
+        .main-section .container .description {
+            margin: 25px 0;
+        }
+
+        .main-section .container .form {
+            position: relative;
+            justify-content: space-between;
+        }
+
+            .main-section .container .form .currency {
+                position: absolute;
+                top: 25%;
+                font-size: var(--mdFontSize);
+                margin-left: 0.5rem;
+                font-weight: bold;
+            }
+
+            .main-section .container .form .form-item {
+                width: 8.3rem;
+                height: 60px;
+                border-radius: var(--smRadius);
+            }
+
+            .main-section .container .form input {
+                box-sizing: border-box;
+                padding-left: 1.5rem;
+                font-weight: bolder;
+                font-size: var(--mdFontSize);
+            }
+
+            .main-section .container .form .btn {
+                background-color: #00be1c;
+                color: var(--mutedColor);
+                font-size: var(--mdFontSize);
+            }
+
+    .donate-card .card-footer {
+        justify-content: space-between;
+    }
+
+        .donate-card .card-footer button {
+            border-radius: var(--smRadius);
+            height: 40px;
+            width: 9.3rem;
+            background-color: var(--mutedColor);
+            color: var(--secondaryColor);
+            font-weight: 400;
+        }
+</style>
+
+
+<div class="container">
+    <div class="donate-card">
+        <!-- alert component     -->
+        <div class="alert-wrapper">
+            <div class="alert">
+                $167 still needed for this project
+            </div>
+        </div>
+
+        <div class="main-section">
+            <div class="progress-bar"></div>
+            <!-- main section container -->
+            <div class="container">
+                <div class="notice">
+                    <span class="highlight">Only 3 days left</span>
+                    to fund this project
+                </div>
+                <div class="description">
+                    Join the <span class="highlight">42</span>
+                    other donors who have already supported this project. Every dollar helps.
+                </div>
+                <!-- donate form -->
+                <div class="form">
+                    <span class="currency">$</span>
+                    <input type="text" value="50" class="form-item amount-input">
+                    <button class="form-item btn" onclick="window.location.href='/Home/Payment'">Give Now</button>
+                </div>
+                <!-- end of donate form -->
+                <a href="#">Why give $50?</a>
+            </div>
+            <!-- end of main section container -->
+        </div>
+        <div class="card-footer">
+            <button>Save for later</button>
+            <button>Tell your friends</button>
+        </div>
+    </div>
+</div>

@@ -2,35 +2,458 @@
     ViewData["Title"] = "About Us";
 }
 
-<section class="body">
-	<section class="header container-fluid">About Us</section>
-	<section class="content container">
-		<div class="row">
-			<div class="col-6">
-                <p class="aboutusfont">
-                    We are a team of social entrepreneurs studying and working in Singapore.
+<style>
+    body{
+    color: #fff;
+    min-width: 300px;
+    max-width:1400px;
+    margin:auto;
+    overflow-x: hidden;
+    font-family: 'Cabin Condensed', sans-serif;
+}
 
-                    Our mission is provide users easily accessible financial information online.
+section {
+    padding: 15px;
+}
 
-                    SbloG aims to simplify the process of looking up for supplementary aid by fact-checking charitable organizations for you.
+#page{
+    min-height: 100vh !important;
+    height: 100% !important;
+}
 
-                    In order to do that, we personally verify blog we put up for their authenticity.
+.experince-header {
+    position: relative;
+    font-size: 42px;
+}
+.experince-header-set{
+    padding-right:10px;
+    background: #111322;
+}
 
-                    SbloG has managed to partner with a few organizations dedicated to helping out low-income families with children embarking on their education journey.
+.experince-alt {
+    color:#6c6f8a ;
+    margin: 50px 0;
+    font-size: 22px;
+    width: 70%;
+}
 
-                    Our primary focus is on helping to make education more affordable for those in need.
+.experince-header::before{
+    content: "";
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 0;
+    background: #272a47;
+    height: 10%;
+    width: 100%;
+    z-index: -1;
+}
 
-                    SbloG is currently a startup social enterprise, and there is a bright future ahead of us.
+.pageControl{
+    height: 25px;
+}
 
-                    We are constantly improving our website and partnering with other organizations to bring the best for our users.
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
 
-                </p>
-			</div>
-			<div class="col-6">
-				<img src="~/images/home.jpg" alt="About Us">
-			</div>
-		</div>
-	</section>
+.about-me-section{
+    padding: 20px 0;
+    width: 50%;
+    color: #878aa1;
+    font-size: 40px;
+    overflow: hidden;
+}
+
+
+
+:root{
+    --swiper-pagination-bullet-inactive-color: #fff;
+}
+.swiper-pagination-bullet-active {
+    background-color: #fff !important;
+    box-shadow: 0 0 15px #ffffff90;
+    width: 15px !important;
+    border-radius: 5px !important;
+}
+
+
+.comment-container{
+    width: 100%;
+    height: 150px;
+    background: red;
+    margin: 35px 0;
+}
+
+.img-section{
+    width: 350px;
+    height: 350px;
+    padding: 20px 0;
+    border-radius: 5px;
+
+}
+.img-section img{
+    width:100%;
+    height:100%;
+  box-shadow: 15px 15px 0 #222335;
+  border-radius:5px;
+}
+.about-text{
+    margin-bottom: 35px;
+    margin-top: 35px;
+
+}
+
+.skills-bar-about{
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 30px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 32px;
+
+}
+
+.social-links{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: #1e213a;
+    border-radius: 5px;
+    transition: .3s ease all;
+
+}
+.social-links i{
+    margin: auto;
+}
+
+
+.social-links:nth-child(2):hover{
+    background: #0072B1;
+}
+.social-links:nth-child(3){
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+
+}
+.social-links:nth-child(3):hover {
+    background: transparent;
+}
+.social-links:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    transition: .3s ease all;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.social-links:nth-child(3):hover::before {
+    opacity: 1;
+}
+.social-links:nth-child(4):hover {
+    background: #1DB954;
+}
+.social-links:nth-child(5):hover,.social-links:nth-child(1):hover {
+    background: #ffffff;
+    color: #000;
+}
+
+
+
+
+
+
+.experince-header::before{
+    content: "";
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 0;
+    background: #272a47;
+    height: 10%;
+    width: 100%;
+    z-index: -1;
+}
+
+.comment-slider-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+
+
+.swiper2 {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin: 50px 0;
+    border-radius: 5px;
+
+
+}
+.c-slider-img-container{
+    width: 50%;
+
+}
+
+.slider-com-artic{
+    position: absolute;
+    top: -20%;
+    left: 3%;
+    background: #111322;
+    font-size: 24px;
+    width: 150px;
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px;
+    color:#ffffff ;
+        border-radius: 5px;
+}
+
+.comm-header{
+    position: absolute;
+    top: -15%;
+    right: 5%;
+    background: #353853;
+    text-align:center;
+    width: 100px;
+    margin: 10px 0;
+    padding: 10px;
+        border-radius: 5px;
+}
+.comment-section-container{
+    width: 1400px;
+    margin: auto;
+}
+.comment-section{
+    width: 600px;
+    margin-right: auto;
+    overflow-x: hidden;
+}
+
+.slider-com-link{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 20px;
+}
+.slider-com-link a{
+    padding: 10px 25px;
+    background: #4d5172;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px;
+    color:#ffffff ;
+    border-radius: 5px;
+}
+
+.coverflow {
+    position: relative;
+    background: #353853;
+    border-radius: 5px;
+    box-shadow: 15px 15px 0 #222335;
+}
+
+
+.comment-slider-img{
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(to top, #1b1d2e, #282b44);
+}
+
+.comment-slider-com{
+    color: #fff;
+}
+section .container {
+    justify-content: space-between;
+}
+
+</style>
+
+
+
+<section>
+    <!-- 03 page start -->
+    <div id="page">
+        <div id="about" class="pageControl"></div>
+        <div class="experince-container-fluid">
+            <div class="container">
+                <div class="section-box-container">
+                    <div class="experince-header"><span class="experince-header-set">About me</span></div>
+                    <div class="about-container">
+                        <div class="about-me-section">
+                            <div class="about-text">
+
+                                We are a team of social entrepreneurs studying and working in Singapore. 
+                                Our mission is provide users easily accessible financial information online. 
+                                SbloG aims to simplify the process of looking up for supplementary aid by fact-checking charitable organizations for you. 
+                                In order to do that, we personally verify each and every blog we put up for their authenticity. 
+                                SbloG has managed to partner with a few organizations dedicated to helping out low-income families with children embarking on their education journey. 
+                            </div>
+                            <div class="about-text">
+                                Our primary focus is on helping to make education more affordable for those in need.
+                                SbloG is currently a startup social enterprise, and there is a bright future ahead of us.
+                                We are constantly improving our website and partnering with other organizations to bring the best for our users.
+                            </div>
+                            <div class="about-text">
+                                Are you ready
+                                to change the world with us?
+                                <div style="color:#bfc0c4 ;" class="about-text">
+                                    Social
+                                </div>
+                            </div>
+                            <div class="skills-bar-about">
+
+                                <a class="social-links"><i class="margin fa-brands fa-github"></i></a>
+                                <a class="social-links"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a class="social-links"><i class="insta fa-brands fa-instagram"></i></a>
+                                <a class="social-links" href="https://open.spotify.com/user/21xbxidz623as32iw4r3u3uiq" target="_blank"><i class="fa-brands fa-spotify"></i></a>
+                                <a class="social-links"><i class="fa-brands fa-codepen"></i></a>
+
+                            </div>
+                            <div style="color:#bfc0c4 ;" class="about-text">
+                                My interests
+                            </div>
+                            <div class="skills-bar-about">
+                                <i class="fa-brands fa-html5" title="HTML"></i>
+                                <i class="fa-brands fa-css3-alt" title="CSS"></i>
+                                <i class="fa-brands fa-bootstrap" title="Bootstrap"></i>
+                                <i class="fa-brands fa-sass" title="Sass"></i>
+                                <i class="fa-brands fa-js" title="JavaScript"></i>
+                                <i class="fa-brands fa-react" title="React"></i>
+                            </div>
+                        </div>
+                        <div class="img-section">
+                            <img src="~/images/favicon.png">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="comment-section-container"  style="background: #111322;">
+                <div class="comment-section">
+                    <div class="swiper-container swiper2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide coverflow">
+                                <div class="comment-slider-container">
+                                    <div class="c-slider-img-container">
+                                        <div class="comment-slider-img">
+                                            <!-- img sesafsd -->
+                                        </div>
+                                    </div>
+                                    <div class="comment-slider-com">
+                                        <div class="slider-comments">
+                                            <div class="comm-header">Co-Founder</div>
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro aliquid asperiores quis
+                                            minus! Eveniet, perspiciatis.
+                                        </div>
+                                        <div class="slider-com-artic">
+                                            Ugur Yildiz
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide coverflow">
+                                <div class="comment-slider-container">
+                                    <div class="c-slider-img-container">
+                                        <div class="comment-slider-img">
+
+                                        </div>
+                                    </div>
+                                    <div class="comment-slider-com">
+                                        <div class="slider-comments">
+                                            <div class="comm-header">Co-Founder</div>
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro aliquid asperiores quis
+                                            minus! Eveniet, perspiciatis.
+                                        </div>
+                                        <div class="slider-com-artic">
+                                            Ugur Yildiz
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide coverflow">
+                                <div class="comment-slider-container">
+                                    <div class="c-slider-img-container">
+                                        <div class="comment-slider-img">
+                                            <!-- img sesafsd -->
+                                        </div>
+                                    </div>
+                                    <div class="comment-slider-com">
+                                        <div class="slider-comments">
+                                            <div class="comm-header">Co-Founder</div>
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro aliquid asperiores quis
+                                            minus! Eveniet, perspiciatis.
+                                        </div>
+                                        <div class="slider-com-artic">
+                                            Ugur Yildiz
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide coverflow">
+                                <div class="comment-slider-container">
+                                    <div class="c-slider-img-container">
+                                        <div class="comment-slider-img">
+                                            <!-- img sesafsd -->
+                                        </div>
+                                    </div>
+                                    <div class="comment-slider-com">
+                                        <div class="slider-comments">
+                                            <div class="comm-header">Co-Founder</div>
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro aliquid asperiores quis
+                                            minus! Eveniet, perspiciatis.
+                                        </div>
+                                        <div class="slider-com-artic">
+                                            Ugur Yildiz
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination swiper-pagination1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-    
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
 
+        var swiper2 = new Swiper('.swiper2', {
+        effect:"coverflow",
+                direction: 'horizontal',
+                loop: true,
+                autoplay: {
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+                },
+                pagination: {
+                el: ".swiper-pagination1",
+                clickable:true,
+                },
+                coverflowEffect:{
+                    slideShadows: false,
+                    rotate:20,
+                    scale:0.70,
+                }
+
+        });
+
+
+</script>
