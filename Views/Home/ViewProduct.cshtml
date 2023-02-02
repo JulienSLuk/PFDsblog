@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WEB2022_ZZFashion.Models.Product>
 
 @{
-    ViewData["Title"] = "VNew Arrivals";
+    ViewData["Title"] = "View Blogs";
 }
 
 <h1>Hand Picked Blogs Just For You!</h1>
@@ -17,14 +17,12 @@
         </tr>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ID)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
+            
 
             <th>
                 @Html.DisplayNameFor(model => model.Desc)
@@ -32,9 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Cat)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ObsoleteStatus)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -42,14 +38,12 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                <img src="~/images/Products/@item.Image" />
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
+            <td>
+                <img class="blogimg" src="~/images/Products/@item.Image" />
+            </td>
+            
 
             <td>
                 @Html.DisplayFor(modelItem => item.Desc)
@@ -57,9 +51,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Cat)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ObsoleteStatus)
-            </td>
+            
 
         </tr>
 }
