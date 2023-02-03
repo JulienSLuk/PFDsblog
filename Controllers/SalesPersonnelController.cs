@@ -73,7 +73,7 @@ namespace WEB2022_ZZFashion.Controllers
             {
                 //Add staff record to database
                 string memberid = customerContext.Add(customer);
-                return RedirectToAction("PendingVoucher", new { id = memberid });
+                return RedirectToAction("Index", new { id = memberid });
             }
             else
             {
